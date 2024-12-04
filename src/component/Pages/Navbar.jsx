@@ -1,79 +1,103 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import logo from '../../assets/games.png'
+import { Link, NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [theme, setTheme] = useState("light");
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
+
+  const handleTheme = () => {
+    setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
+  };
+
   return (
-    <div>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
-          <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />
-              </svg>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+    <div className="bg-[#5C4E4E] text-white">
+      <nav className="flex justify-between items-center px-8 py-7">
+        <div className="">
+          <Link className="font font-extrabold text-4xl flex gap-2">
+          <img className="w-12 h-12" src={logo} alt="" />
+            SportZone
+          </Link>
+        </div>
+        <div className="hidden md:flex space-x-6">
+          <NavLink
+           to="/"
+            className="hover:text-[#A67C52] hover:font-bold hover:text-xl flex items-center space-x-2"
+          >
+            Home
+          </NavLink>
+          <NavLink  className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+            All Sports Equipments
+          </NavLink>
+          <NavLink to="/add" className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+            Add Equipment
+          </NavLink>
+          <NavLink href="#" className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+            My Equipment List
+          </NavLink>
+        </div>
+
+        <div className="md:hidden">
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="focus:outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
-            </ul>
-          </div>
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
         </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+        {/* <button className="btn" onClick={handleTheme}>
+          {theme === "light" ? "Dark" : "Light"}
+        </button> */}
+
+       
+        <div className="flex items-center gap-5">
+        <input
+         onClick={handleTheme}
+          type="checkbox"
+          value="synthwave"
+          className="toggle theme-controller"
+        />
+          <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+            Login
+          </button>
+          <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+            Register
+          </button>
         </div>
-        <div className="navbar-end">
-          <a className="btn">Button</a>
+      </nav>
+      {menuOpen && (
+        <div className="flex flex-col space-y-4 px-6 py-4 bg-[#38EF7D] md:hidden">
+          <NavLink href="#" className="hover:text-gray-200">
+            Home
+          </NavLink>
+          <NavLink href="#" className="hover:text-gray-200">
+            All Sports Equipments
+          </NavLink>
+          <NavLink href="#" className="hover:text-gray-200">
+            Add Equipment
+          </NavLink>
+          <NavLink href="#" className="hover:text-gray-200">
+            My Equipment List
+          </NavLink>
         </div>
-      </div>
+      )}
     </div>
   );
 };
