@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import logo from '../../assets/games.png'
-import { Link, NavLink } from "react-router-dom";
+import logo from "../../assets/games.png";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
+  const location = useLocation();
+  const isHomepage = location.pathname === "/";
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
@@ -16,27 +18,33 @@ const Navbar = () => {
 
   return (
     <div className="bg-[#5C4E4E] text-white">
-      <nav className="flex justify-between items-center px-8 py-7">
+      <nav className="flex justify-between items-center md:px-8 py-7">
         <div className="">
-          <Link className="font font-extrabold text-4xl flex gap-2">
-          <img className="w-12 h-12" src={logo} alt="" />
+          <Link className="font font-extrabold text-2xl md:text-4xl flex items-center gap-2">
+            <img className="w-12 h-12" src={logo} alt="" />
             SportZone
           </Link>
         </div>
         <div className="hidden md:flex space-x-6">
           <NavLink
-           to="/"
+            to="/"
             className="hover:text-[#A67C52] hover:font-bold hover:text-xl flex items-center space-x-2"
           >
             Home
           </NavLink>
-          <NavLink  className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+          <NavLink className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
             All Sports Equipments
           </NavLink>
-          <NavLink to="/add" className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+          <NavLink
+            to="/add"
+            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+          >
             Add Equipment
           </NavLink>
-          <NavLink href="#" className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
+          <NavLink
+            href="#"
+            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+          >
             My Equipment List
           </NavLink>
         </div>
@@ -62,24 +70,28 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-        {/* <button className="btn" onClick={handleTheme}>
-          {theme === "light" ? "Dark" : "Light"}
-        </button> */}
-
        
-        <div className="flex items-center gap-5">
-        <input
-         onClick={handleTheme}
-          type="checkbox"
-          value="synthwave"
-          className="toggle theme-controller"
-        />
-          <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
-            Login
-          </button>
-          <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
-            Register
-          </button>
+
+        <div className="flex md:flex-row flex-col items-center gap-2 md:gap-5">
+          {isHomepage && (
+            <input
+              onClick={handleTheme}
+              type="checkbox"
+              value="synthwave"
+              className="toggle theme-controller"
+            />
+          )}
+
+          <NavLink to="/login">
+            <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+              Login
+            </button>
+          </NavLink>
+          <NavLink to="/register">
+            <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+              Register
+            </button>
+          </NavLink>
         </div>
       </nav>
       {menuOpen && (

@@ -1,3 +1,5 @@
+import Swal from "sweetalert2";
+
 const AddEquipment = () => {
   const handleAddEquipment = (event) => {
     event.preventDefault();
@@ -11,16 +13,46 @@ const AddEquipment = () => {
     const quantity = form.quantity.value;
     const time = form.time.value;
     const photo = form.photo.value;
-    const newEquipment = { name, rating, price, customization, category, details, photo ,quantity,time};
+    const userEmail = form.userEmail.value;
+    const userName = form.userName.value;
+    const newEquipment = {
+      name,
+      rating,
+      price,
+      customization,
+      category,
+      details,
+      photo,
+      quantity,
+      time,
+    };
     console.log(newEquipment);
-   
+    form.reset();
+    fetch("http://localhost:5000/equipment", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(newEquipment),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          Swal.fire({
+            title: "Success!",
+            text: "Do you want to continue",
+            icon: "success",
+            confirmButtonText: "Cool",
+          });
+        }
+      });
   };
   return (
     <div>
-      <div className="w-10/12 mx-auto bg-base-200  px-32 py-10 my-20">
+      <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
         <div className="text-center my-5">
           <h1 className="font-bold text-3xl mb-10">Add New Equipment</h1>
-         
         </div>
 
         <form onSubmit={handleAddEquipment}>
@@ -120,6 +152,30 @@ const AddEquipment = () => {
               />
             </label>
           </div>
+          <div className="md:flex justify-between gap-6 items-center my-5">
+            <label className="form-control w-full ">
+              <div className="label">
+                <span className="label-text">User Email</span>
+              </div>
+              <input
+                type="text"
+                name="userEmail"
+                placeholder="Enter  Email"
+                className="input input-bordered w-full "
+              />
+            </label>
+            <label className="form-control w-full ">
+              <div className="label">
+                <span className="label-text">User Name</span>
+              </div>
+              <input
+                type="text"
+                name="userName"
+                placeholder=" Enter User Name"
+                className="input input-bordered w-full "
+              />
+            </label>
+          </div>
 
           <div className="md:flex justify-between gap-6 items-center my-5">
             <label className="form-control w-full ">
@@ -140,8 +196,6 @@ const AddEquipment = () => {
             className="w-full py-3 text-center font-bold button bg-[#5c4E4E]  border-2 border-[#331A15] text-[#ffffff] rounded-lg"
           />
         </form>
-
-        
       </div>
     </div>
   );
