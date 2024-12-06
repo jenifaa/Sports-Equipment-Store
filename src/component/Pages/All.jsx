@@ -1,8 +1,10 @@
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const All = () => {
   const loadedData = useLoaderData();
+  console.log(loadedData);
   const [users, setUsers] = useState(loadedData);
   const handleUserDelete = (id) =>{
     Swal.fire({
@@ -33,15 +35,12 @@ const All = () => {
 
       })
 
-
-
-      
     });
   }
 
   return (
     <div>
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto h-screen ">
         <table className="table">
           {/* head */}
           <thead>
@@ -54,42 +53,46 @@ const All = () => {
           </thead>
           <tbody>
             {users.map((user) => {
-              <tr>
-              <td>
-                <div className="flex items-center gap-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle h-12 w-12">
-                      <img
-                        src="https://img.daisyui.com/images/profile/demo/2@94.webp"
-                        alt="Avatar Tailwind CSS Component"
-                      />
+              return (
+                <tr key={user._id}>
+                  <td>
+                    <div className="flex items-center gap-3">
+                      <div className="avatar">
+                        <div className="mask mask-squircle h-12 w-12">
+                          <img
+                            src={user.photo}
+                            alt="Avatar Tailwind CSS Component"
+                          />
+                        </div>
+                      </div>
+                      <div>
+                        <div className="font-bold">{user.name}</div>
+                        <div className="text-sm opacity-50">United States</div>
+                      </div>
                     </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-              <th>
-                <button onClick={() => handleUserDelete(user.id)} className="btn btn-ghost btn-xs">Delete</button>
-              </th>
-            </tr>
-             
+                  </td>
+                  <td>
+                    Zemlak, Daniel and Leannon
+                    <br />
+                    <span className="badge badge-ghost badge-sm">
+                      Desktop Support Technician
+                    </span>
+                  </td>
+                  <td>Purple</td>
+                  <th>
+                    <Link to="/equipment/:id" className="btn">details</Link>
+                  </th>
+                  <th>
+                    <button
+                      onClick={() => handleUserDelete(user._id)}
+                      className="btn"
+                    >
+                      Delete
+                    </button>
+                  </th>
+                </tr>
+              );
             })}
-
-            
           </tbody>
         </table>
       </div>

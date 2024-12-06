@@ -13,7 +13,7 @@ const EquipmentCard = ({ equipment }) => {
     quantity,
     time,
   } = equipment;
-  console.log(equipment);
+  // console.log(equipment);
 
   return (
     <div>

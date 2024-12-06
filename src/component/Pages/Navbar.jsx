@@ -29,7 +29,7 @@ const Navbar = () => {
             SportZone
           </Link>
         </div>
-        <div className="hidden md:flex space-x-6">
+        <div className="hidden lg:flex space-x-6">
           <NavLink
             to="/"
             className="hover:text-[#A67C52] hover:font-bold hover:text-xl flex items-center space-x-2"
@@ -62,7 +62,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div className="md:hidden">
+        <div className="lg:hidden">
           <button
             onClick={() => setMenuOpen(!menuOpen)}
             className="focus:outline-none"
@@ -84,7 +84,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="flex md:flex-row flex-col items-center gap-2 md:gap-5">
+        <div className="flex lg:flex-row flex-col items-center gap-2 lg:gap-5">
           {isHomepage && (
             <input
               onClick={handleTheme}
@@ -126,16 +126,25 @@ const Navbar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="flex flex-col space-y-4 px-6 py-4 bg-[#38EF7D] md:hidden">
+        <div className="flex flex-col space-y-4 px-6 py-4 bg-[#071f10] lg:hidden">
           <NavLink to="/" className="hover:text-gray-200">
             Home
           </NavLink>
           <NavLink to="/all" className="hover:text-gray-200">
             All Sports Equipments
           </NavLink>
-          <NavLink to="/add" className="hover:text-gray-200">
-            Add Equipment
-          </NavLink>
+          {user && user?.email ? (
+            <>
+              <NavLink
+                to="/add"
+                className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+              >
+                Add Equipment
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
           <NavLink to="/list" className="hover:text-gray-200">
             My Equipment List
           </NavLink>

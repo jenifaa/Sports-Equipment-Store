@@ -132,6 +132,7 @@ const Signup = () => {
           />
         </form>
       </div>
+      
     </div>
   );
 };

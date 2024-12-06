@@ -15,6 +15,8 @@ import Error from "./component/Main/Error.jsx";
 import All from "./component/Pages/All.jsx";
 import EquipmentList from "./component/Pages/EquipmentList.jsx";
 import UpdateEquipment from "./component/Pages/UpdateEquipment.jsx";
+import EquipmentCards from "./component/Pages/EquipmentCards.jsx";
+import EquipmentDetails from "./component/Pages/EquipmentDetails.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
       {
         path: 'all',
         element: <All></All>,
-        // loader: () => fetch('http://localhost:5000/users')
+        loader: () => fetch('http://localhost:5000/equipment')
       },
       {
         path: "list",
@@ -51,7 +53,13 @@ const router = createBrowserRouter([
   {
     path: 'update',
     element: <UpdateEquipment></UpdateEquipment>
+  },
+  {
+    path: '/equipment/:id',
+    element: <EquipmentDetails></EquipmentDetails>,
+    loader: () => fetch('http://localhost:5000/equipment')
   }
+
 ]);
 
 createRoot(document.getElementById("root")).render(

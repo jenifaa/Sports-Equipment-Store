@@ -3,6 +3,7 @@ import Banner from "./Banner";
 import EquipmentCards from "./EquipmentCards";
 import FamousEquipment from "./FamousEquipment";
 import Loading from "./Loading";
+
 import Reaction from "./Reaction";
 const Home = () => {
     
@@ -16,6 +17,7 @@ const Home = () => {
      
      
      <FamousEquipment></FamousEquipment>
+     {/* <LottieCheck></LottieCheck> */}
      
      
      <Reaction></Reaction>
