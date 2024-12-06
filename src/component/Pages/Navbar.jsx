@@ -1,11 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/games.png";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import AuthProvider, { AuthContext } from "../Main/AuthProvider";
 
 const Navbar = () => {
+  const { user, setUser, logOut, updateUserProfile, loading } =
+    useContext(AuthContext);
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
   const location = useLocation();
+  const navigate = useNavigate();
   const isHomepage = location.pathname === "/";
 
   useEffect(() => {
@@ -32,17 +36,26 @@ const Navbar = () => {
           >
             Home
           </NavLink>
-          <NavLink className="hover:text-[#A67C52] hover:font-bold hover:text-xl ">
-            All Sports Equipments
-          </NavLink>
           <NavLink
-            to="/add"
+            to="/all"
             className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
           >
-            Add Equipment
+            All Sports Equipments
           </NavLink>
+          {user && user?.email ? (
+            <>
+              <NavLink
+                to="/add"
+                className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+              >
+                Add Equipment
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
           <NavLink
-            href="#"
+            to="/list"
             className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
           >
             My Equipment List
@@ -70,7 +83,6 @@ const Navbar = () => {
             </svg>
           </button>
         </div>
-       
 
         <div className="flex md:flex-row flex-col items-center gap-2 md:gap-5">
           {isHomepage && (
@@ -81,31 +93,50 @@ const Navbar = () => {
               className="toggle theme-controller"
             />
           )}
+        
 
-          <NavLink to="/login">
-            <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
-              Login
-            </button>
-          </NavLink>
-          <NavLink to="/register">
-            <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
-              Register
-            </button>
-          </NavLink>
+          {user && user?.email ? (
+            <>
+              <NavLink>
+                <button onClick={logOut} className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                  LogOut
+                </button>
+              </NavLink>
+              <NavLink to="/update">
+                <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                  Update
+                </button>
+              </NavLink>
+            </>
+          ) : (
+            <>
+              <NavLink to="/login">
+                <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                  Login
+                </button>
+              </NavLink>
+              <NavLink to="/register">
+                <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                  Register
+                </button>
+              </NavLink>
+            </>
+          )}
         </div>
       </nav>
+
       {menuOpen && (
         <div className="flex flex-col space-y-4 px-6 py-4 bg-[#38EF7D] md:hidden">
-          <NavLink href="#" className="hover:text-gray-200">
+          <NavLink to="/" className="hover:text-gray-200">
             Home
           </NavLink>
-          <NavLink href="#" className="hover:text-gray-200">
+          <NavLink to="/all" className="hover:text-gray-200">
             All Sports Equipments
           </NavLink>
-          <NavLink href="#" className="hover:text-gray-200">
+          <NavLink to="/add" className="hover:text-gray-200">
             Add Equipment
           </NavLink>
-          <NavLink href="#" className="hover:text-gray-200">
+          <NavLink to="/list" className="hover:text-gray-200">
             My Equipment List
           </NavLink>
         </div>

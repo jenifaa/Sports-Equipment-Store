@@ -1,24 +1,60 @@
+import { useContext, useRef, useState } from "react";
 import Navbar from "./Navbar";
+import { AuthContext } from "../Main/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
+  const {userLogin,setUser, setUserLogin} = useContext(AuthContext);
+  const [login, setLogin] = useState(false);
+  const [error, setError] = useState([]);
+  const emailRef = useRef();
+  const navigate = useNavigate();
   const handleSignin = (event) => {
     event.preventDefault();
     const form = event.target;
-    const name = form.name.value;
-  
-    const photo = form.photo.value;
-    // const newEquipment = {
-    //   name,
-    //   rating,
-    //   price,
-    //   customization,
-    //   category,
-    //   details,
-    //   photo,
-    //   quantity,
-    //   time,
-    // };
-    // console.log(newEquipment);
+    
+    const email = form.email.value;
+    const password = form.password.value;
+    
+ const newUser = {email}
+    
+   console.log(email,password);
+   userLogin(email,password)
+   .then(result =>{
+    const user = result.user;
+    setUser(user);
+
+
+    navigate(location?.state ? location.state : "/");
+
+    const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+    const loginInfo = {email, lastSignInTime};
+
+
+     const createdAt = result?.user?.metadata?.creationTime;
+
+
+
+        
+    fetch('http://localhost:5000/users', {
+      method: 'POST',
+      headers: {
+        'content-type' : 'application/json'
+      },
+      body: JSON.stringify(newUser)
+
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+
+   
+   })
+   .catch(error =>{
+    console.log(error);
+    setError({login: error.code})
+   })
   };
   return (
     <div>
@@ -35,9 +71,9 @@ const Signin = () => {
                 <span className="label-text">Email</span>
               </div>
               <input
-                type="text"
+                type="email"
                 name="email"
-                placeholder="Enter a Equipment name"
+                placeholder="Enter Email"
                 className="input input-bordered w-full "
               />
             </label>
@@ -46,7 +82,7 @@ const Signin = () => {
                 <span className="label-text">Password</span>
               </div>
               <input
-                type="text"
+                type="password"
                 name="password"
                 placeholder=" Enter Password"
                 className="input input-bordered w-full "
@@ -55,7 +91,7 @@ const Signin = () => {
           </div>
          
 
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          {/* <div className="md:flex justify-between gap-6 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Photo</span>
@@ -67,7 +103,7 @@ const Signin = () => {
                 className="input input-bordered w-full "
               />
             </label>
-          </div>
+          </div> */}
           <input
             type="submit"
             value="Sign in"
