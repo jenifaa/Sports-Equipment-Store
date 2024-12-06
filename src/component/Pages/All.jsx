@@ -6,7 +6,7 @@ const All = () => {
   const loadedData = useLoaderData();
   console.log(loadedData);
   const [users, setUsers] = useState(loadedData);
-  const handleUserDelete = (id) =>{
+  const handleUserDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -14,40 +14,44 @@ const All = () => {
       showCancelButton: true,
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!"
+      confirmButtonText: "Yes, delete it!",
     }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/equipment/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            if (data.deletedCount) {
+              Swal.fire({
+                title: "Deleted!",
+                text: "Your file has been deleted.",
+                icon: "success",
+              });
 
-      fetch(`http://localhost:5000/users/${id}`, {
-        method: 'DELETE'
-      })
-      .then(res => res.json())
-      .then(data =>{
-        if (data.deletedCount) {
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted.",
-          icon: "success"
-        });
-
-        const remainingUser = users.filter(user => user._id !== id);
-        setUsers(remainingUser);
+              const remainingUser = users.filter((user) => id !== user._id);
+              setUsers(remainingUser);
+            }
+          });
       }
-
-      })
-
     });
-  }
+  };
 
   return (
     <div>
+
+      <div className="flex justify-center items-center my-5">
+        <button className="px-5 py-2 bg-[#2a0909] text-white font-bold"> Sort</button>
+      </div>
       <div className="overflow-x-auto h-screen ">
         <table className="table">
           {/* head */}
           <thead>
             <tr>
+              <th>Photo</th>
               <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
+              <th>Category</th>
+              <th>Rating </th>
               <th></th>
             </tr>
           </thead>
@@ -65,22 +69,24 @@ const All = () => {
                           />
                         </div>
                       </div>
-                      <div>
-                        <div className="font-bold">{user.name}</div>
-                        <div className="text-sm opacity-50">United States</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div>
+                      <div className="font-bold">{user.name}</div>
+                      <div className="text-sm opacity-50">
+                        {user.customization}
                       </div>
                     </div>
                   </td>
                   <td>
-                    Zemlak, Daniel and Leannon
-                    <br />
-                    <span className="badge badge-ghost badge-sm">
-                      Desktop Support Technician
-                    </span>
+                    <div>{user.category}</div>
                   </td>
-                  <td>Purple</td>
+                  <td>{user.rating}</td>
                   <th>
-                    <Link to="/equipment/:id" className="btn">details</Link>
+                    <Link to="/equipment/:id" className="btn">
+                      details
+                    </Link>
                   </th>
                   <th>
                     <button

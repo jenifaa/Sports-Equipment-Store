@@ -15,8 +15,9 @@ const Signin = () => {
     
     const email = form.email.value;
     const password = form.password.value;
+    const name = form.name.value
     
- const newUser = {email}
+ const newUser = {email,name}
     
    console.log(email,password);
    userLogin(email,password)
@@ -72,6 +73,17 @@ const Signin = () => {
               </div>
               <input
                 type="email"
+                name="email"
+                placeholder="Enter Email"
+                className="input input-bordered w-full "
+              />
+            </label>
+            <label className="form-control w-full ">
+              <div className="label">
+                <span className="label-text">Name</span>
+              </div>
+              <input
+                type="name"
                 name="email"
                 placeholder="Enter Email"
                 className="input input-bordered w-full "

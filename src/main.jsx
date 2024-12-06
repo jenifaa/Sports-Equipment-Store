@@ -1,8 +1,8 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayOut from "./component/Main/MainLayOut.jsx";
@@ -17,6 +17,7 @@ import EquipmentList from "./component/Pages/EquipmentList.jsx";
 import UpdateEquipment from "./component/Pages/UpdateEquipment.jsx";
 import EquipmentCards from "./component/Pages/EquipmentCards.jsx";
 import EquipmentDetails from "./component/Pages/EquipmentDetails.jsx";
+import PrivateRoutes from "./component/Main/PrivateRoutes.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -32,14 +33,14 @@ const router = createBrowserRouter([
         element: <AddEquipment></AddEquipment>,
       },
       {
-        path: 'all',
+        path: "all",
         element: <All></All>,
-        loader: () => fetch('http://localhost:5000/equipment')
+        loader: () => fetch("http://localhost:5000/equipment"),
       },
       {
         path: "list",
-        element: <EquipmentList></EquipmentList>
-      }
+        element: <EquipmentList></EquipmentList>,
+      },
     ],
   },
   {
@@ -51,15 +52,19 @@ const router = createBrowserRouter([
     element: <Signup></Signup>,
   },
   {
-    path: 'update',
-    element: <UpdateEquipment></UpdateEquipment>
+    path: "update",
+    element: <UpdateEquipment></UpdateEquipment>,
+    loader: () => fetch("http://localhost:5000/users"),
   },
   {
-    path: '/equipment/:id',
-    element: <EquipmentDetails></EquipmentDetails>,
-    loader: () => fetch('http://localhost:5000/equipment')
-  }
-
+    path: "/equipment/:id",
+    element: (
+      <PrivateRoutes>
+        <EquipmentDetails></EquipmentDetails>,
+      </PrivateRoutes>
+    ),
+    loader: () => fetch("http://localhost:5000/equipment"),
+  },
 ]);
 
 createRoot(document.getElementById("root")).render(
