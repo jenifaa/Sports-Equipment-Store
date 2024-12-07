@@ -22,7 +22,8 @@ const Signup = () => {
     const photo = form.photo.value;
 
     console.log(email, password, name, photo);
-    const newUser = { email, name };
+     const newUser = { email, name };
+     
     setError("");
     setRegister(false);
 

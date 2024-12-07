@@ -19,7 +19,7 @@ const Card = ({ card }) => {
         <figure className="px-10 pt-10">
           <img
             src={photo}
-            alt="Shoes"
+          
             className="rounded-xl w-[300px] h-[300px]"
           />
         </figure>

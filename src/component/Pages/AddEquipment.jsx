@@ -1,6 +1,8 @@
+import { useState } from "react";
 import Swal from "sweetalert2";
 
 const AddEquipment = () => {
+  const [defaultValue, setDefaultValue] = useState(null)
   const handleAddEquipment = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -48,6 +50,17 @@ const AddEquipment = () => {
         }
       });
   };
+
+
+  // useEffect(() =>{
+  //   fetch("http://localhost:5000/users")
+  //   .then(res => res.json())
+  //   .then(data => {
+  //     setDefaultValue(data[5]);
+  //   })
+  //   .catch((error) => console.log("Error fetching user data:", error));
+  //  },[])
+  
   return (
     <div>
       <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
@@ -160,7 +173,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="userEmail"
-                placeholder="Enter  Email"
+                // value={defaultValue.email}
                 className="input input-bordered w-full "
               />
             </label>
@@ -171,7 +184,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="userName"
-                placeholder=" Enter User Name"
+              //  value={defaultValue.name}
                 className="input input-bordered w-full "
               />
             </label>

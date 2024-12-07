@@ -1,8 +1,9 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 
 const UpdateEquipment = () => {
+  const navigate = useNavigate();
   const loadedData = useLoaderData();
   console.log(loadedData);
   const [update, setUpdate] = useState(null);
@@ -50,6 +51,8 @@ const UpdateEquipment = () => {
 
       const data = await response.json();
       console.log("Update successful:", data);
+      navigate("/list")
+      
       alert("Equipment updated successfully!");
     } catch (error) {
       console.error("Error updating equipment:", error);
