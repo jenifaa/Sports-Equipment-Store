@@ -54,12 +54,18 @@ const Navbar = () => {
           ) : (
             ""
           )}
-          <NavLink
-            to="/list"
-            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-          >
-            My Equipment List
-          </NavLink>
+          {user && user?.email ? (
+            <>
+              <NavLink
+                to="/list"
+                className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+              >
+                My Equipment List
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
         </div>
 
         <div className="lg:hidden">
@@ -93,20 +99,22 @@ const Navbar = () => {
               className="toggle theme-controller"
             />
           )}
-        
 
           {user && user?.email ? (
             <>
               <NavLink>
-                <button onClick={logOut} className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                <button
+                  onClick={logOut}
+                  className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md"
+                >
                   LogOut
                 </button>
               </NavLink>
-              <NavLink to="/update">
+              {/* <NavLink to="/update">
                 <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
                   Update
                 </button>
-              </NavLink>
+              </NavLink> */}
             </>
           ) : (
             <>
@@ -145,9 +153,18 @@ const Navbar = () => {
           ) : (
             ""
           )}
-          <NavLink to="/list" className="hover:text-gray-200">
-            My Equipment List
-          </NavLink>
+           {user && user?.email ? (
+            <>
+              <NavLink
+                to="/list"
+                className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+              >
+                My Equipment List
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
         </div>
       )}
     </div>

@@ -4,7 +4,7 @@ import { AuthContext } from "../Main/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const Signin = () => {
-  const {userLogin,setUser, setUserLogin} = useContext(AuthContext);
+  const { userLogin, setUser, setUserLogin } = useContext(AuthContext);
   const [login, setLogin] = useState(false);
   const [error, setError] = useState([]);
   const emailRef = useRef();
@@ -12,54 +12,35 @@ const Signin = () => {
   const handleSignin = (event) => {
     event.preventDefault();
     const form = event.target;
-    
+
     const email = form.email.value;
     const password = form.password.value;
-    const name = form.name.value
-    
- const newUser = {email,name}
-    
-   console.log(email,password);
-   userLogin(email,password)
-   .then(result =>{
-    const user = result.user;
-    setUser(user);
+    // const name = form.name.value;
 
+    // const newUser = { email };
 
-    navigate(location?.state ? location.state : "/");
+    console.log(email, password);
+    userLogin(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        setUser(user);
 
-    const lastSignInTime = result?.user?.metadata?.lastSignInTime;
-    const loginInfo = {email, lastSignInTime};
+        navigate(location?.state ? location.state : "/");
 
+        const lastSignInTime = result?.user?.metadata?.lastSignInTime;
+        const loginInfo = { email, lastSignInTime };
 
-     const createdAt = result?.user?.metadata?.creationTime;
-
-
-
-        
-    fetch('http://localhost:5000/users', {
-      method: 'POST',
-      headers: {
-        'content-type' : 'application/json'
-      },
-      body: JSON.stringify(newUser)
-
-    })
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-    })
-
-   
-   })
-   .catch(error =>{
-    console.log(error);
-    setError({login: error.code})
-   })
+        const createdAt = result?.user?.metadata?.creationTime;
+      })
+      .catch((error) => {
+        console.log(error);
+        setError({ login: error.code });
+      });
   };
   return (
     <div>
-        <Navbar></Navbar>
+      <Navbar></Navbar>
       <div className="w-10/12 px-8 md:w-7/12 mx-auto bg-base-200  md:px-32 py-10 my-20">
         <div className="text-center my-5">
           <h1 className="font-bold text-3xl mb-10">SignIn Here</h1>
@@ -78,17 +59,7 @@ const Signin = () => {
                 className="input input-bordered w-full "
               />
             </label>
-            <label className="form-control w-full ">
-              <div className="label">
-                <span className="label-text">Name</span>
-              </div>
-              <input
-                type="name"
-                name="email"
-                placeholder="Enter Email"
-                className="input input-bordered w-full "
-              />
-            </label>
+
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Password</span>
@@ -101,7 +72,6 @@ const Signin = () => {
               />
             </label>
           </div>
-         
 
           {/* <div className="md:flex justify-between gap-6 items-center my-5">
             <label className="form-control w-full ">
@@ -123,7 +93,6 @@ const Signin = () => {
           />
         </form>
       </div>
-      
     </div>
   );
 };

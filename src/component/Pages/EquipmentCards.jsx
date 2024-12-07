@@ -32,10 +32,10 @@ const EquipmentCards = () => {
   // const handleTabClick = (category) => {
   //   setActiveTab(category);
   //   if (category === "All") {
-  //     setFilteredEquipments(equipments); // Reset to all data
+  //     setFilteredEquipments(equipments);
   //   } else {
   //     const filtered = equipments.filter((equipment) => equipment.category === category);
-  //     setFilteredEquipments(filtered); // Display only selected category data
+  //     setFilteredEquipments(filtered); 
   //   }
   // };
   return (

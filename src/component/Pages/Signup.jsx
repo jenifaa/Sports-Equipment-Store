@@ -6,11 +6,11 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
-  const { creatNewUser ,setUser, setLoading} = useContext(AuthContext);
+  const { creatNewUser, setUser, setLoading, userUpdate } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [register, setRegister] = useState(false);
-
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -22,9 +22,9 @@ const Signup = () => {
     const photo = form.photo.value;
 
     console.log(email, password, name, photo);
-    // const newUser = { email, name };
-     setError('');
-     setRegister(false)
+    const newUser = { email, name };
+    setError("");
+    setRegister(false);
 
     if (password.length < 6) {
       setError("Password Should be At-least 6 character long");
@@ -48,21 +48,28 @@ const Signup = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        userUpdate({ displayName: name, photoUrl: photo });
         setUser(true);
         setRegister(true);
         navigate(location?.state ? location.state : "/");
-        
-        
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(newUser),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+          });
       })
+
       .catch((error) => {
         console.log(error.message);
-        setRegister(false)
+        setRegister(false);
         setLoading(false);
-
-
       });
-
-   
   };
   return (
     <div>
@@ -110,7 +117,6 @@ const Signup = () => {
               />
             </label>
           </div>
-          
 
           <div className="md:flex justify-between gap-6 items-center my-5">
             <label className="form-control w-full ">
@@ -132,7 +138,6 @@ const Signup = () => {
           />
         </form>
       </div>
-      
     </div>
   );
 };

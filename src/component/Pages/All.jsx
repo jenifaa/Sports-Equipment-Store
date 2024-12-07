@@ -84,7 +84,7 @@ const All = () => {
                   </td>
                   <td>{user.rating}</td>
                   <th>
-                    <Link to="/equipment/:id" className="btn">
+                    <Link to={`/equipment/${user._id}`} className="btn">
                       details
                     </Link>
                   </th>

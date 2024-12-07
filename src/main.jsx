@@ -40,6 +40,7 @@ const router = createBrowserRouter([
       {
         path: "list",
         element: <EquipmentList></EquipmentList>,
+        loader: () => fetch("http://localhost:5000/equipment"),
       },
     ],
   },
@@ -52,9 +53,14 @@ const router = createBrowserRouter([
     element: <Signup></Signup>,
   },
   {
-    path: "update",
-    element: <UpdateEquipment></UpdateEquipment>,
-    loader: () => fetch("http://localhost:5000/users"),
+    path: "/update/:id",
+    element: (
+      <PrivateRoutes>
+        {" "}
+        <UpdateEquipment></UpdateEquipment>,
+      </PrivateRoutes>
+    ),
+    loader: ({ params }) => fetch(`http://localhost:5000/equipment/${params.id}`),
   },
   {
     path: "/equipment/:id",
