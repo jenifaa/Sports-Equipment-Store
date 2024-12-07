@@ -1,8 +1,10 @@
 import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { AuthContext } from "../Main/AuthProvider";
 
 const UpdateEquipment = () => {
+  const {user} = useContext(AuthContext);
   const navigate = useNavigate();
   const loadedData = useLoaderData();
   console.log(loadedData);
@@ -192,7 +194,7 @@ const UpdateEquipment = () => {
               <input
                 type="text"
                 name="userEmail"
-                value={update.email}
+                value={user?.email}
                 disabled
                 
                 className="input input-bordered w-full "
@@ -206,7 +208,7 @@ const UpdateEquipment = () => {
                 type="text"
                 name="userName"
 
-                value={update.name} 
+                value={user?.displayName} 
                 disabled
               
                 className="input input-bordered w-full "

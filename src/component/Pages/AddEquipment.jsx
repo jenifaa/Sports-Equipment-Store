@@ -1,8 +1,20 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../Main/AuthProvider";
 
 const AddEquipment = () => {
-  const [defaultValue, setDefaultValue] = useState(null)
+  const {user} = useContext(AuthContext)
+  console.log(user);
+
+
+
+
+
+
+  // const formData = useLoaderData();
+  // const [defaultValue, setDefaultValue] = useState(formData);
+  // console.log(formData);
   const handleAddEquipment = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -173,7 +185,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="userEmail"
-                // value={defaultValue.email}
+                value={user?.email}
                 className="input input-bordered w-full "
               />
             </label>
@@ -184,7 +196,7 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="userName"
-              //  value={defaultValue.name}
+               value={user?.displayName}
                 className="input input-bordered w-full "
               />
             </label>
