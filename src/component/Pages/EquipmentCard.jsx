@@ -62,26 +62,7 @@ const EquipmentCard = ({ equipment }) => {
         </div>
       </div>
 
-      {/* <img src={photo} alt="" /> */}
-      {/* <div className="card w-96 ">
-          <figure>
-            <img
-              src={photo}
-              alt=""
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">
-              {name}
-              <div className="badge badge-secondary">{rating}</div>
-            </h2>
-            <p>{customization}</p>
-            <div className="card-actions justify-end">
-              <div className="badge badge-outline">{quantity}</div>
-              <div className="badge badge-outline">{price}</div>
-            </div>
-          </div>
-        </div> */}
+     
     </div>
   );
 };

@@ -19,6 +19,9 @@ const Navbar = () => {
   const handleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
+  if(loading){
+    // return <Loading></Loading>
+  }
 
   return (
     <div className="bg-[#5C4E4E] text-white">
