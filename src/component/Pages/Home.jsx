@@ -17,8 +17,7 @@ const Home = () => {
      
      
      <FamousEquipment></FamousEquipment>
-     {/* <LottieCheck></LottieCheck> */}
-     
+    
      
      <Reaction></Reaction>
     </div>
@@ -26,10 +25,3 @@ const Home = () => {
 };
 
 export default Home;
-// style={{
-//     backgroundImage: 'url("https://i.ibb.co.com/pWkQzH7/banner.webp")', 
-//     backgroundSize: 'cover', 
-//     backgroundPosition: 'center', 
-//     height: '100vh', 
-//     width: '100%' ,
-//     opacity: '5%'

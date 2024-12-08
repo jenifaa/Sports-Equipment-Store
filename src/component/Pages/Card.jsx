@@ -14,7 +14,7 @@ const Card = ({ card }) => {
     quantity,
     time,
   } = card;
-  // const [users, setUsers] = useState(null);
+  
   const handleUserDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -26,7 +26,7 @@ const Card = ({ card }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/equipment/${id}`, {
+        fetch(`https://equipment-store-server.vercel.app/equipment/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

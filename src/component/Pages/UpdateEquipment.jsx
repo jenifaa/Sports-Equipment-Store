@@ -2,33 +2,19 @@ import { useLoaderData, useNavigate, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Main/AuthProvider";
+import Loading from "./Loading";
 
 const UpdateEquipment = () => {
-  const {user} = useContext(AuthContext);
+  const { user, loading } = useContext(AuthContext);
   const navigate = useNavigate();
   const loadedData = useLoaderData();
-  console.log(loadedData);
+
   const [update, setUpdate] = useState(null);
-  const {id} = useParams();
-  // const { email, name } = loadedData || {};
-  // const { email, name, rating, price, customization, time, quantity, category, details, photo } = loadedData || {};
- 
+  const { id } = useParams();
 
- useEffect(() =>{
-  fetch("http://localhost:5000/users")
-  .then(res => res.json())
-  .then(data => {
-    setUpdate(data[5]);
-  })
-  .catch((error) => console.log("Error fetching user data:", error));
- },[])
-
-
-
-  // const {email,name} = loadedData;
-  const handleUpdateUser =async (e) => {
+  const handleUpdateUser = async (e) => {
     e.preventDefault();
-  
+
     const updateUser = {
       rating: e.target.rating.value,
       price: e.target.price.value,
@@ -38,23 +24,24 @@ const UpdateEquipment = () => {
       category: e.target.category.value,
       details: e.target.details.value,
       photo: e.target.photo.value,
-    
     };
 
-
     try {
-      const response = await fetch(`http://localhost:5000/equipment/${id}`, {
-        method: "PUT",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(updateUser),
-      });
+      const response = await fetch(
+        `https://equipment-store-server.vercel.app/equipment/${id}`,
+        {
+          method: "PUT",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify(updateUser),
+        }
+      );
 
       if (!response.ok) throw new Error("Failed to update equipment");
 
       const data = await response.json();
       console.log("Update successful:", data);
-      navigate("/list")
-      
+      navigate("/list");
+
       alert("Equipment updated successfully!");
     } catch (error) {
       console.error("Error updating equipment:", error);
@@ -62,24 +49,10 @@ const UpdateEquipment = () => {
     }
   };
 
-
-
-  if (!update) {
-    return <div>Loading user data...</div>;
+  if (loading) {
+    return <Loading></Loading>;
   }
 
-
-    // fetch(`http://localhost:5000/users/${loadedUser._id}`, {
-    //     method: 'PUT',
-    //     headers: {
-    //         'content-type': 'application/json'
-    //     },
-    //     body: JSON.stringify(updateUser)
-    // })
-    // .then(res => res.json())
-    // .then(data =>{
-    //     console.log(data);
-    // })
   
   return (
     <div>
@@ -89,7 +62,7 @@ const UpdateEquipment = () => {
           <h1 className="font-bold text-3xl mb-10">Update Equipment</h1>
         </div>
 
-        <form onSubmit={ handleUpdateUser}>
+        <form onSubmit={handleUpdateUser}>
           <div className="md:flex justify-between gap-6 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
@@ -196,7 +169,6 @@ const UpdateEquipment = () => {
                 name="userEmail"
                 value={user?.email}
                 disabled
-                
                 className="input input-bordered w-full "
               />
             </label>
@@ -207,10 +179,8 @@ const UpdateEquipment = () => {
               <input
                 type="text"
                 name="userName"
-
-                value={user?.displayName} 
+                value={user?.displayName}
                 disabled
-              
                 className="input input-bordered w-full "
               />
             </label>

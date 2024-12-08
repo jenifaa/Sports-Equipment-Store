@@ -24,7 +24,7 @@ const EquipmentList = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/equipment/${id}`, {
+        fetch(`https://equipment-store-server.vercel.app/equipment/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -43,10 +43,10 @@ const EquipmentList = () => {
       }
     });
   };
-  console.log(equipmentData);
+ 
   return (
-    <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+    <div className="bg-base-200">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-10/12 mx-auto py-10">
         {cards.map((card) => (
           <div key={card._id} className="bg-base-100 w-96 shadow-xl">
             <figure className="px-10 pt-10">
@@ -58,9 +58,10 @@ const EquipmentList = () => {
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{card.name || "Untitled"}</h2>
+              <p className="text-xl text-green-600 font-semibold">$ {card.price}</p>
               <p>{card.customization}</p>
               <div className="card-actions">
-                <Link to={`/update/${card._id}`} className="btn btn-primary">
+                <Link to={`/update/${card._id}`} className="btn bg-[#5C4E4E] text-white font-semibold">
                   Update
                 </Link>
                 <button

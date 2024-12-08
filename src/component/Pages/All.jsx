@@ -8,51 +8,22 @@ const All = () => {
   const [users, setUsers] = useState(loadedData);
   const [sortDirection, setSortDirection] = useState(1);
   const handleSort = () => {
-    // const newDirection = sortDirection === 1 ? 1 : "";
-    // setSortDirection(newDirection);
+   
 
-
-    fetch(`http://localhost:5000/equipment?sort=1`)
-      .then((res) => res.json())
-      .then((data) => {
-        setUsers(data);
-      })
-      .catch((error) => {
-        console.error("Failed to fetch sorted data:", error);
-      });
+    const handleSort = () => {
+      const newSortDirection = sortDirection === 1 ? -1 : 1; // Toggle between ascending (1) and descending (-1)
+      setSortDirection(newSortDirection); // Update the sort direction state
+    
+      fetch(`https://equipment-store-server.vercel.app/equipment?sort=${newSortDirection}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setUsers(data); // Update the state with sorted equipment
+        })
+        .catch((error) => console.error("Error fetching sorted data:", error));
+    };
   };
 
-  // const handleUserDelete = (id) => {
-  //   Swal.fire({
-  //     title: "Are you sure?",
-  //     text: "You won't be able to revert this!",
-  //     icon: "warning",
-  //     showCancelButton: true,
-  //     confirmButtonColor: "#3085d6",
-  //     cancelButtonColor: "#d33",
-  //     confirmButtonText: "Yes, delete it!",
-  //   }).then((result) => {
-  //     if (result.isConfirmed) {
-  //       fetch(`http://localhost:5000/equipment/${id}`, {
-  //         method: "DELETE",
-  //       })
-  //         .then((res) => res.json())
-  //         .then((data) => {
-  //           if (data.deletedCount) {
-  //             Swal.fire({
-  //               title: "Deleted!",
-  //               text: "Your file has been deleted.",
-  //               icon: "success",
-  //             });
-
-  //             const remainingUser = users.filter((user) => id !== user._id);
-  //             setUsers(remainingUser);
-  //           }
-  //         });
-  //     }
-  //   });
-  // };
-
+  
   return (
     <div>
       <div className="flex justify-center items-center my-5">

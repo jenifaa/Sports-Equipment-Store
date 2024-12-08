@@ -2,10 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import logo from "../../assets/games.png";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthProvider, { AuthContext } from "../Main/AuthProvider";
+import Loading from "./Loading";
+import { BsPersonCircle } from "react-icons/bs";
 
 const Navbar = () => {
   const { user, setUser, logOut, updateUserProfile, loading } =
     useContext(AuthContext);
+
+
   const [menuOpen, setMenuOpen] = useState(false);
   const [theme, setTheme] = useState("light");
   const location = useLocation();
@@ -19,15 +23,18 @@ const Navbar = () => {
   const handleTheme = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-  if(loading){
-    // return <Loading></Loading>
+  if (loading) {
+    return <Loading></Loading>;
   }
 
   return (
     <div className="bg-[#5C4E4E] text-white">
       <nav className="flex justify-between items-center md:px-8 py-7">
         <div className="">
-          <Link className="font font-extrabold text-2xl md:text-4xl flex items-center gap-2">
+          <Link
+            to="/"
+            className="font font-extrabold text-2xl md:text-4xl flex items-center gap-2"
+          >
             <img className="w-12 h-12" src={logo} alt="" />
             SportZone
           </Link>
@@ -102,9 +109,18 @@ const Navbar = () => {
               className="toggle theme-controller"
             />
           )}
+          {user && user?.photoUrl ? (
+            <img
+              src={user?.photoUrl}
+              title={user?.displayName || "User"}
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full md:flex"
+            ></img>
+          ) : (
+            <BsPersonCircle className="text-5xl" />
+          )}
 
           {user && user?.email ? (
-            <>
+            <div>
               <NavLink>
                 <button
                   onClick={logOut}
@@ -113,12 +129,7 @@ const Navbar = () => {
                   LogOut
                 </button>
               </NavLink>
-              {/* <NavLink to="/update">
-                <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
-                  Update
-                </button>
-              </NavLink> */}
-            </>
+            </div>
           ) : (
             <>
               <NavLink to="/login">
@@ -156,7 +167,7 @@ const Navbar = () => {
           ) : (
             ""
           )}
-           {user && user?.email ? (
+          {user && user?.email ? (
             <>
               <NavLink
                 to="/list"

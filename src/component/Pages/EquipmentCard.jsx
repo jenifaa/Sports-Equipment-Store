@@ -17,18 +17,18 @@ const EquipmentCard = ({ equipment }) => {
     quantity,
     time,
   } = equipment;
-  // console.log(equipment);
+  
 
-  const ratingChanged = (newRating) => {
-    setRate(newRating); // Update local state with the new rating
-    console.log(`New Rating for ${name}: ${newRating}`);
-  };
+  // const ratingChanged = (newRating) => {
+  //   setRate(newRating); // Update local state with the new rating
+  //   console.log(`New Rating for ${name}: ${newRating}`);
+  // };
 
   return (
     <div>
-      <div className="border p-6 rounded-xl">
+      <div className="border p-6 rounded-xl bg-[#ffffff]">
         <div>
-          <img className="w-full h-72 rounded-xl" src={photo} alt="" />
+          <img className="w-full md:w-[300px] h-72 rounded-xl" src={photo} alt="" />
         </div>
         <h2 className="card-title flex items-center gap-3">{name}</h2>
 

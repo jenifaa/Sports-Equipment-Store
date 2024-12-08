@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-
+import heart from '../../assets/hearth.png'
 const Reaction = () => {
   const comments = [
     "Great product!",
@@ -48,9 +48,12 @@ const Reaction = () => {
 
   return (
     <div>
+      <div className="flex items-center gap-5 justify-center">
       <h2 className="my-10 text-center font-bold text-5xl">
-        Love From Our Customers
+        <span className="text-7xl italic text-red-800">L</span>ove From Our Customers
       </h2>
+      <img className="w-10 pt-2" src={heart} alt="" />
+      </div>
       <p className="text-center text-sm text-gray-600 mb-8">
         Discover what our customers love the most! Our top-rated products are known for their outstanding quality, durability, and performance. <br /> Don't miss out on the best products that have made a difference in countless lives. Take a look at some of the amazing <br /> reviews from our satisfied customers.
       </p>

@@ -3,25 +3,40 @@ import Navbar from "./Navbar";
 import { AuthContext } from "../Main/AuthProvider";
 import auth from "../firebase.init";
 import { toast } from "react-toastify";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import iconImg from '../../assets/google (1).png'
 
 const Signup = () => {
-  const { creatNewUser, setUser, setLoading, userUpdate } =
+  const { creatNewUser, setUser, setLoading, userUpdate,signInWithGoogle } =
     useContext(AuthContext);
   const navigate = useNavigate();
   const [error, setError] = useState("");
   const [register, setRegister] = useState(false);
 
+
+
+  const handleGoogleSignUp = () =>{
+    signInWithGoogle()
+    .then(result =>{
+      navigate('/');
+      toast.success('Login successfully')
+    })
+    .catch(err =>{
+      console.log(err);
+    })
+  }
+
   const handleSignUp = (event) => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
+    const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
 
-    const photo = form.photo.value;
+   
 
-    console.log(email, password, name, photo);
+    
      const newUser = { email, name };
      
     setError("");
@@ -48,12 +63,13 @@ const Signup = () => {
     creatNewUser(email, password)
       .then((result) => {
         const user = result.user;
-        console.log(user);
+    
+        toast.success("Registered Successfully")
         userUpdate({ displayName: name, photoUrl: photo });
         setUser(true);
         setRegister(true);
         navigate(location?.state ? location.state : "/");
-        fetch("http://localhost:5000/users", {
+        fetch("https://equipment-store-server.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -68,6 +84,7 @@ const Signup = () => {
 
       .catch((error) => {
         console.log(error.message);
+        toast.error("Invalid Information.Please try again...")
         setRegister(false);
         setLoading(false);
       });
@@ -137,7 +154,20 @@ const Signup = () => {
             value="SignUp"
             className="w-full py-3 text-center font-bold button bg-[#5c4E4E]  border-2 border-[#331A15] text-[#ffffff] rounded-lg"
           />
+
         </form>
+        {error && <p className="text-red-600 px-4 pb-4">{error}</p>}
+
+       
+        <div className="my-4 ml-3  rounded-full lg:w-[38%] w-full">
+            <button
+              onClick={handleGoogleSignUp}
+              className=" font-semibold flex justify-around items-center border-2 p-3 rounded-full "
+            >
+              <img src={iconImg} alt="" className="w-8 mr-3" />
+              <p>Sign Up with Google</p>
+            </button>
+          </div>
       </div>
     </div>
   );

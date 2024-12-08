@@ -5,16 +5,8 @@ import { AuthContext } from "../Main/AuthProvider";
 
 const AddEquipment = () => {
   const {user} = useContext(AuthContext)
-  console.log(user);
+ 
 
-
-
-
-
-
-  // const formData = useLoaderData();
-  // const [defaultValue, setDefaultValue] = useState(formData);
-  // console.log(formData);
   const handleAddEquipment = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -40,9 +32,9 @@ const AddEquipment = () => {
       quantity,
       time,
     };
-    console.log(newEquipment);
+  
     form.reset();
-    fetch("http://localhost:5000/equipment", {
+    fetch("https://equipment-store-server.vercel.app/equipment", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -64,14 +56,7 @@ const AddEquipment = () => {
   };
 
 
-  // useEffect(() =>{
-  //   fetch("http://localhost:5000/users")
-  //   .then(res => res.json())
-  //   .then(data => {
-  //     setDefaultValue(data[5]);
-  //   })
-  //   .catch((error) => console.log("Error fetching user data:", error));
-  //  },[])
+ 
   
   return (
     <div>
@@ -186,6 +171,7 @@ const AddEquipment = () => {
                 type="text"
                 name="userEmail"
                 value={user?.email}
+                disabled
                 className="input input-bordered w-full "
               />
             </label>
@@ -197,6 +183,7 @@ const AddEquipment = () => {
                 type="text"
                 name="userName"
                value={user?.displayName}
+               disabled
                 className="input input-bordered w-full "
               />
             </label>
