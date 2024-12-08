@@ -4,8 +4,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Main/AuthProvider";
 import helmet from "helmet";
 const AddEquipment = () => {
-  const {user} = useContext(AuthContext)
- 
+  const { user } = useContext(AuthContext);
 
   const handleAddEquipment = (event) => {
     event.preventDefault();
@@ -32,7 +31,7 @@ const AddEquipment = () => {
       quantity,
       time,
     };
-  
+
     form.reset();
     fetch("https://equipment-store-server.vercel.app/equipment", {
       method: "POST",
@@ -43,7 +42,6 @@ const AddEquipment = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-       
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
@@ -55,12 +53,8 @@ const AddEquipment = () => {
       });
   };
 
-
- 
-  
   return (
     <div>
-      
       <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
         <div className="text-center my-5">
           <h1 className="font-bold text-3xl mb-10">Add New Equipment</h1>
@@ -183,8 +177,8 @@ const AddEquipment = () => {
               <input
                 type="text"
                 name="userName"
-               value={user?.displayName}
-               disabled
+                value={user?.displayName}
+                disabled
                 className="input input-bordered w-full "
               />
             </label>

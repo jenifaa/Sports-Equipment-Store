@@ -4,30 +4,25 @@ import Swal from "sweetalert2";
 
 const All = () => {
   const loadedData = useLoaderData();
- 
-  const [equipment, setEquipment] = useState([])
+
+  const [equipment, setEquipment] = useState([]);
   const [users, setUsers] = useState(loadedData);
   const [sortDirection, setSortDirection] = useState(1);
- 
 
-    const handleSort = () => {
-      const newSortDirection = sortDirection === 1 ? -1 : 1; 
-      setSortDirection(newSortDirection);
-    
-      fetch(`https://equipment-store-server.vercel.app/equipment?sort=${newSortDirection}`)
-        .then((res) => res.json())
-        .then((data) => {
-          setUsers(data); 
-        })
-        .catch((error) => console.error("Error fetching sorted data:", error));
-    };
-  
+  const handleSort = () => {
+    const newSortDirection = sortDirection === 1 ? -1 : 1;
+    setSortDirection(newSortDirection);
 
+    fetch(
+      `https://equipment-store-server.vercel.app/equipment?sort=${newSortDirection}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        setUsers(data);
+      })
+      .catch((error) => console.error("Error fetching sorted data:", error));
+  };
 
-
-
-  
-  
   return (
     <div>
       <div className="flex justify-center items-center my-5">
@@ -35,15 +30,11 @@ const All = () => {
           onClick={handleSort}
           className="px-5 py-2 bg-[#2a0909] text-white font-bold"
         >
-           Sort by Price
+          Sort by Price
         </button>
-
-
-
       </div>
       <div className="">
         <table className="table">
-          
           <thead>
             <tr>
               <th>Photo</th>
@@ -90,7 +81,6 @@ const All = () => {
                       details
                     </Link>
                   </th>
-                  
                 </tr>
               );
             })}

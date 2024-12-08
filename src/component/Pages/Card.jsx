@@ -14,7 +14,7 @@ const Card = ({ card }) => {
     quantity,
     time,
   } = card;
-  
+
   const handleUserDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -37,9 +37,6 @@ const Card = ({ card }) => {
                 text: "Your file has been deleted.",
                 icon: "success",
               });
-
-              // const remainingUser = users.filter((user) => id !== user._id);
-              // setUsers(remainingUser);
             }
           });
       }

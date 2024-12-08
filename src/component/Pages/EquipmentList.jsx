@@ -5,13 +5,8 @@ import Swal from "sweetalert2";
 
 const EquipmentList = () => {
   const equipmentData = useLoaderData();
-  //   const id = useParams();
-
 
   const [cards, setCards] = useState(equipmentData);
-
-
-
 
   const handleUserDelete = (id) => {
     Swal.fire({
@@ -43,7 +38,7 @@ const EquipmentList = () => {
       }
     });
   };
- 
+
   return (
     <div className="bg-base-200">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-10/12 mx-auto py-10">
@@ -58,10 +53,15 @@ const EquipmentList = () => {
             </figure>
             <div className="card-body items-center text-center">
               <h2 className="card-title">{card.name || "Untitled"}</h2>
-              <p className="text-xl text-green-600 font-semibold">$ {card.price}</p>
+              <p className="text-xl text-green-600 font-semibold">
+                $ {card.price}
+              </p>
               <p>{card.customization}</p>
               <div className="card-actions">
-                <Link to={`/update/${card._id}`} className="btn bg-[#5C4E4E] text-white font-semibold">
+                <Link
+                  to={`/update/${card._id}`}
+                  className="btn bg-[#5C4E4E] text-white font-semibold"
+                >
                   Update
                 </Link>
                 <button
