@@ -11,7 +11,6 @@ const All = () => {
  
 
     const handleSort = () => {
-      console.log("Button clicked");
       const newSortDirection = sortDirection === 1 ? -1 : 1; 
       setSortDirection(newSortDirection);
     
@@ -36,15 +35,15 @@ const All = () => {
           onClick={handleSort}
           className="px-5 py-2 bg-[#2a0909] text-white font-bold"
         >
-           Sort {sortDirection === 1 ? "Descending" : "Ascending"}
+           Sort by Price
         </button>
 
 
-{/* <button onClick={() => setSort(1)}>Sort Ascending</button> */}
+
       </div>
-      <div className="overflow-x-auto h-screen ">
+      <div className="">
         <table className="table">
-          {/* head */}
+          
           <thead>
             <tr>
               <th>Photo</th>

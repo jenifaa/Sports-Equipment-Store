@@ -4,9 +4,7 @@ import Lottie from "lottie-react";
 import lottie from '../../assets/Animation - 1733508384416.json'
 
 const Banner = () => {
-  // const style = {
-  //   width: "500px"
-  // }
+ 
   return (
     <div className=" md:mb-[100px]">
       <div className="lg:flex justify-between items-center w-11/12 mx-auto">

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import { Fade } from "react-awesome-reveal";
 import Famous from "./Famous";
+import EquipCard from "./EquipCard";
 
 const FamousEquipment = () => {
   const [famousEquipments, setFamousEquipments] = useState([]);
@@ -28,9 +29,14 @@ const FamousEquipment = () => {
         </p>
       </Fade>
       <div className="bg-base-200 py-5">
-        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 w-8/12 mx-auto gap-4 py-10">
-          {famousEquipments.slice(4, 10).map((famous) => (
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 w-8/12 mx-auto gap-4 pt-10 pb-5">
+          {famousEquipments.slice(4,7).map((famous) => (
             <Famous key={famous._id} famous={famous}></Famous>
+          ))}
+        </div>
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-3 w-8/12 mx-auto gap-4 pb-10">
+          {famousEquipments.slice(8, 10).map((equip) => (
+           <EquipCard key={equip._id} equip={equip}></EquipCard>
           ))}
         </div>
       </div>

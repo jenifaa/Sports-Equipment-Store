@@ -1,7 +1,7 @@
 import Swal from 'sweetalert2';
-import icon from '../../assets/30-percent.png'
+import discountIcon from '../../assets/discount.png'
 
-const Famous = ({famous}) => {
+const EquipCard = ({equip}) => {
     const {
         name,
         rating,
@@ -12,8 +12,8 @@ const Famous = ({famous}) => {
         photo,
         quantity,
         time,
-      } = famous;
-      const handleBuy = () =>{
+      } = equip;
+      const handleBuyProduct = () =>{
         Swal.fire({
             title: "Are you sure?",
             text: "If you want to buy product click YES ",
@@ -37,7 +37,7 @@ const Famous = ({famous}) => {
             <div>
                 <div className='relative'>
                     <img className="px-10 py-4 " src={photo} alt="" />
-                    <img className='w-20 absolute top-7' src={icon} alt="" />
+                    <img className='w-24 absolute top-5' src={discountIcon} alt="" />
                 </div>
                 <hr />
                <div className="px-4">
@@ -45,7 +45,7 @@ const Famous = ({famous}) => {
                 <p>{customization}</p>
                 <div className='flex justify-between items-center py-2'>
                 <p className="text-xl font-semibold my-3 text-green-600">${price}</p>
-                <button onClick={handleBuy} className='font-bold bg-green-600 px-3 py-2 text-[#ffffff]'>Buy Now</button>
+                <button onClick={handleBuyProduct} className='font-bold bg-green-600 px-3 py-2 text-[#ffffff]'>Buy Now</button>
                 </div>
                </div>
             </div>
@@ -53,4 +53,4 @@ const Famous = ({famous}) => {
     );
 };
 
-export default Famous;
+export default EquipCard;

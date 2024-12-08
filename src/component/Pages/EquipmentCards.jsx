@@ -8,7 +8,7 @@ const EquipmentCards = () => {
   const [activeTab, setActiveTab] = useState("");
 
   useEffect(() => {
-    fetch("https://equipment-store-server.vercel.app/equipment")
+    fetch("https://equipment-store-server.vercel.app/homeEquipment")
       .then((res) => res.json())
       .then((data) => {
         setEquipments(data);
@@ -29,29 +29,10 @@ const EquipmentCards = () => {
     setFilteredEquipments(filtered); 
   };
 
-  // const handleTabClick = (category) => {
-  //   setActiveTab(category);
-  //   if (category === "All") {
-  //     setFilteredEquipments(equipments);
-  //   } else {
-  //     const filtered = equipments.filter((equipment) => equipment.category === category);
-  //     setFilteredEquipments(filtered); 
-  //   }
-  // };
+  
   return (
     <div className="">
-      {/* <div role="tablist" className="tabs tabs-lifted">
-      {equipments.map((equipment, index) => (
-        <a
-          key={index}
-          role="tab"
-          className={`tab ${activeTab === equipment ? 'tab-active font-bold text-xl' : ''}`}
-          onClick={() => setActiveTab(equipment)} // Set the active tab on click
-        >
-          {equipment.category}
-        </a>
-      ))}
-    </div> */}
+    
     <div role="tablist" className="tabs tabs-lifted mb-5">
         {categories.map((category, index) => (
           <a
