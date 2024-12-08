@@ -3,6 +3,7 @@ import Navbar from "./Navbar";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Main/AuthProvider";
 import Loading from "./Loading";
+import Swal from "sweetalert2";
 
 const UpdateEquipment = () => {
   const { user, loading } = useContext(AuthContext);
@@ -39,13 +40,16 @@ const UpdateEquipment = () => {
       if (!response.ok) throw new Error("Failed to update equipment");
 
       const data = await response.json();
-      console.log("Update successful:", data);
+      Swal.fire({
+        title: "Updated Successfully",
+        text: "Equipment Update Successful",
+        icon: "success"
+      });
       navigate("/list");
 
-      alert("Equipment updated successfully!");
     } catch (error) {
       console.error("Error updating equipment:", error);
-      alert("An error occurred while updating the equipment.");
+     
     }
   };
 

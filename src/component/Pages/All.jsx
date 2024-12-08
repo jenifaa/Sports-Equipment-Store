@@ -1,28 +1,33 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const All = () => {
   const loadedData = useLoaderData();
  
+  const [equipment, setEquipment] = useState([])
   const [users, setUsers] = useState(loadedData);
   const [sortDirection, setSortDirection] = useState(1);
-  const handleSort = () => {
-   
+ 
 
     const handleSort = () => {
-      const newSortDirection = sortDirection === 1 ? -1 : 1; // Toggle between ascending (1) and descending (-1)
-      setSortDirection(newSortDirection); // Update the sort direction state
+      console.log("Button clicked");
+      const newSortDirection = sortDirection === 1 ? -1 : 1; 
+      setSortDirection(newSortDirection);
     
       fetch(`https://equipment-store-server.vercel.app/equipment?sort=${newSortDirection}`)
         .then((res) => res.json())
         .then((data) => {
-          setUsers(data); // Update the state with sorted equipment
+          setUsers(data); 
         })
         .catch((error) => console.error("Error fetching sorted data:", error));
     };
-  };
+  
 
+
+
+
+  
   
   return (
     <div>
@@ -31,8 +36,11 @@ const All = () => {
           onClick={handleSort}
           className="px-5 py-2 bg-[#2a0909] text-white font-bold"
         >
-          Sort by Price 
+           Sort {sortDirection === 1 ? "Descending" : "Ascending"}
         </button>
+
+
+{/* <button onClick={() => setSort(1)}>Sort Ascending</button> */}
       </div>
       <div className="overflow-x-auto h-screen ">
         <table className="table">

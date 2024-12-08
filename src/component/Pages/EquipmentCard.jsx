@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import ReactStars from "react-rating-stars-component";
+// import ReactStars from "react-rating-stars-component";
 import React from "react";
+
+import { Rating, ThinStar } from "@smastrom/react-rating";
+
+import "@smastrom/react-rating/style.css";
+// import { useState } from "react";
 
 const EquipmentCard = ({ equipment }) => {
   const [rate, setRate] = useState(0);
@@ -19,10 +24,7 @@ const EquipmentCard = ({ equipment }) => {
   } = equipment;
   
 
-  // const ratingChanged = (newRating) => {
-  //   setRate(newRating); // Update local state with the new rating
-  //   console.log(`New Rating for ${name}: ${newRating}`);
-  // };
+  
 
   return (
     <div>
@@ -32,33 +34,30 @@ const EquipmentCard = ({ equipment }) => {
         </div>
         <h2 className="card-title flex items-center gap-3">{name}</h2>
 
-        <div className="flex gap-5 items-center">
-          <p>{customization}</p>
-          <div className="mt-4 flex items-center gap-2">
-            {/* <ReactStars
-                  count={5}
-                  value={rating}
-                  isHalf={true}
-                  edit={false}
-                  size={24}
-                  activeColor="#ffd700"
-                  emptyColor="#ddd"
-                />
-                 */}
+        <div className="flex justify-between items-center">
+          <p className="mt-2 font-semibold text-orange-800">{customization}</p>
+          <div className="mt-2 flex items-center gap-2">
+          <Rating className=""
+            style={{ maxWidth: 90}}
+            value={rating}
+            readOnly
+            // itemStyles={myStyles}
+           
+          />
 
             <span className="text-sm text-gray-500">({rating})</span>
           </div>
         </div>
 
         <div className="">
-          <div className="">{quantity}</div>
-          <div className="">{price}</div>
+          <div className=""><span className="my-4 font-semibold mr-5">Available Products: </span><span className="font-bold text-orange-600">{quantity}</span></div>
+          <div className=""><span className="my-4 font-semibold mr-5">Price: </span><span className="font-bold text-green-600">$ {price}</span></div>
         </div>
 
         <div>
-          {/* <Link  to={`/equipment/${equipment._id}`}>
-              <button>View Details</button>
-              </Link> */}
+          <Link  to={`/equipment/${equipment._id}`}>
+              <button className="px-4 py-2 bg-[#5C4E4E] text-white font-bold my-4">View Details</button>
+              </Link>
         </div>
       </div>
 

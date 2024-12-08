@@ -8,6 +8,7 @@ import { BsPersonCircle } from "react-icons/bs";
 const Navbar = () => {
   const { user, setUser, logOut, updateUserProfile, loading } =
     useContext(AuthContext);
+ 
 
 
   const [menuOpen, setMenuOpen] = useState(false);
@@ -109,11 +110,11 @@ const Navbar = () => {
               className="toggle theme-controller"
             />
           )}
-          {user && user?.photoUrl ? (
+          {user && user?.photoURL ? (
             <img
-              src={user?.photoUrl}
+              src={user?.photoURL}
               title={user?.displayName || "User"}
-              className="w-10 h-10 md:w-12 md:h-12 rounded-full md:flex"
+              className="w-10 h-10 md:w-14 md:h-14 rounded-full md:flex"
             ></img>
           ) : (
             <BsPersonCircle className="text-5xl" />

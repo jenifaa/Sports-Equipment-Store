@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Main/AuthProvider";
-
+import helmet from "helmet";
 const AddEquipment = () => {
   const {user} = useContext(AuthContext)
  
@@ -43,7 +43,7 @@ const AddEquipment = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         if (data.insertedId) {
           Swal.fire({
             title: "Success!",
@@ -60,6 +60,7 @@ const AddEquipment = () => {
   
   return (
     <div>
+      
       <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
         <div className="text-center my-5">
           <h1 className="font-bold text-3xl mb-10">Add New Equipment</h1>
