@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import Card from "./Card";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const EquipmentList = () => {
   const equipmentData = useLoaderData();
@@ -41,6 +42,9 @@ const EquipmentList = () => {
 
   return (
     <div className="bg-base-200">
+      <Helmet>
+        <title>EquipmentList</title>
+      </Helmet>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-10/12 mx-auto py-10">
         {cards.map((card) => (
           <div key={card._id} className="bg-base-100 w-96 shadow-xl">

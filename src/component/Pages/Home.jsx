@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import Banner from "./Banner";
 
 import EquipmentCards from "./EquipmentCards";
@@ -9,6 +10,9 @@ const Home = () => {
     
   return (
     <div className="">
+      <Helmet>
+        <title>SportZone</title>
+      </Helmet>
      <div className="bg-base-200">
      <Banner></Banner>
 

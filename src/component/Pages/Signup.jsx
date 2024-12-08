@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import iconImg from "../../assets/google (1).png";
 
+import { Helmet } from "react-helmet";
+
 const Signup = () => {
   const { creatNewUser, setUser, setLoading, userUpdate, signInWithGoogle } =
     useContext(AuthContext);
@@ -89,6 +91,9 @@ const Signup = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>SportZone | SignUp</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="w-10/12 px-8 md:w-7/12 mx-auto bg-base-200  md:px-32 py-10 my-20">
         <div className="text-center my-5">

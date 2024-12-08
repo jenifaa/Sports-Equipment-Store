@@ -1,6 +1,7 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 
 const EquipmentDetails = () => {
   const data = useLoaderData();
@@ -39,6 +40,9 @@ const EquipmentDetails = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>Details</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="md:w-11/12 w-full mx-auto mb-24 bg-base-200 px-10 py-10 my-10">
         <div className="grid md:grid-cols-9 gap-10 mt-5 px-3">

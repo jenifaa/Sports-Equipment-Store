@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -25,6 +26,9 @@ const All = () => {
 
   return (
     <div>
+      <Helmet>
+        <title>SportZone | All Equipments </title>
+      </Helmet>
       <div className="flex justify-center items-center my-5">
         <button
           onClick={handleSort}

@@ -4,6 +4,7 @@ import { AuthContext } from "../Main/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import iconImgLogin from '../../assets/google (1).png'
+import { Helmet } from "react-helmet";
 
 const Signin = () => {
   const { userLogin, setUser, setUserLogin, signInWithGoogle } =
@@ -52,6 +53,9 @@ const Signin = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>SportZone | SignIn</title>
+      </Helmet>
       <Navbar></Navbar>
       <div className="w-10/12 px-8 md:w-7/12 mx-auto bg-base-200  md:px-32 py-10 my-20">
         <div className="text-center my-5">
