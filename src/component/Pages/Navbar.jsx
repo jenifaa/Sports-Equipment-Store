@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import logo from "../../assets/games.png";
+import logo from "../../assets/icons/games.png";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthProvider, { AuthContext } from "../Main/AuthProvider";
 import Loading from "./Loading";
@@ -27,16 +27,17 @@ const Navbar = () => {
   if (loading) {
     return <Loading></Loading>;
   }
+ 
 
   return (
-    <div className="bg-[#5C4E4E] text-white">
-      <nav className="flex justify-between items-center md:px-8 py-7">
+    <div className="bg-[#5C4E4E] text-white fixed top-0 w-full z-50 transition-all px-4 duration-500">
+      <nav className="flex justify-between items-center px-5 md:px-10 py-3">
         <div className="">
           <Link
             to="/"
-            className="font font-extrabold text-2xl md:text-4xl flex items-center gap-2"
+            className="font font-extrabold text-2xl md:text-3xl flex items-center gap-2"
           >
-            <img className="w-12 h-12" src={logo} alt="" />
+            <img className="w-14 h-14" src={logo} alt="" />
             SportZone
           </Link>
         </div>
@@ -51,8 +52,22 @@ const Navbar = () => {
             to="/all"
             className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
           >
-            All Sports Equipments
+            All  Equipments
           </NavLink>
+          <NavLink
+            to="/all"
+            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+          >
+            About Us
+          </NavLink>
+          <NavLink
+            to="/all"
+            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
+          >
+           Contact Us
+          </NavLink>
+         
+         
           {user && user?.email ? (
             <>
               <NavLink
@@ -101,7 +116,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="flex lg:flex-row flex-col items-center gap-2 lg:gap-5">
+        <div className="flex md:flex-row flex-col items-center gap-2 lg:gap-5">
           {isHomepage && (
             <input
               onClick={handleTheme}

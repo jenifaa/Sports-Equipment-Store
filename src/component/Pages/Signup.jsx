@@ -4,7 +4,7 @@ import { AuthContext } from "../Main/AuthProvider";
 import auth from "../firebase.init";
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
-import iconImg from "../../assets/google (1).png";
+import iconImg from "../../assets/icons/google (1).png"
 
 import { Helmet } from "react-helmet";
 

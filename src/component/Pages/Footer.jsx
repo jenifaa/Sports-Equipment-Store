@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
-import fb from "../../assets/facebook.png";
-import insta from "../../assets/instagram.png";
-import twitter from "../../assets/twitter.png";
-
+import fb from "../../assets/icons/facebook.png";
+import insta from "../../assets/icons/instagram.png";
+import twitter from "../../assets/icons/twitter.png";
+import logo from "../../assets/icons/games.png";
 
 
 const Footer = () => {
@@ -17,6 +17,7 @@ const Footer = () => {
     >
       <footer className="footer  p-10 md:flex items-center justify-around">
         <nav className="">
+          <img src={logo} className="w-24" alt="" />
           <h2 className="text-5xl font-extrabold font ">SportZone</h2>
           <p className="text-sm font-semibold">ACME Industries Ltd.</p>
         </nav>

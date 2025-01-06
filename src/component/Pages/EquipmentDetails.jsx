@@ -17,12 +17,9 @@ const EquipmentDetails = () => {
   };
 
   useEffect(() => {
-  
-
     const singleCard = data.find(
       (equipment) => equipment._id === id || equipment._id === Number(id)
     );
-  
 
     setEquipment(singleCard || null);
   }, [data, id]);
@@ -44,51 +41,36 @@ const EquipmentDetails = () => {
         <title>Details</title>
       </Helmet>
       <Navbar></Navbar>
-      <div className="md:w-11/12 w-full mx-auto mb-24 bg-base-200 px-10 py-10 my-10">
-        <div className="grid md:grid-cols-9 gap-10 mt-5 px-3">
-          <div className="grid md:col-span-4">
-            <figure className="md:px-5 pt-5 mb-10">
+      <div className="md:w-11/12 w-full mx-auto mb-24 bg-base-200 px-10 py-10 my-40 md:my-10">
+        <div className="grid lg:grid-cols-9 gap-10 mt-5 px-3">
+          <div className="grid lg:col-span-4">
+            <figure className="lg:px-5 pt-5 mb-10">
               <img
                 src={equipment.photo}
                 alt={equipment.name}
-                className="rounded-xl w-full md:w-[400px]"
+                className="rounded-xl w-full md:h-[400px] lg:w-[450px] "
               />
             </figure>
-            <div>
-              <div className="mt-2 lg:flex items-center">
-                <textarea
-                  value={inputValue}
-                  onChange={(e) => setInputValue(e.target.value)}
-                  placeholder=" Write here Your Review..."
-                  className="md:w-80 w-full h-32 border-2 rounded-lg p-4 bg-[#5f5e5e]"
-                />
-                <button
-                  onClick={handleCommentSubmit}
-                  className="bg-[#5C4E4E] px-4 py-3 text-white font-semibold rounded-lg ml-7"
-                >
-                  Submit
-                </button>
-              </div>
-              <div className="mt-5">
-                <h3 className="text-lg font-bold mb-3">Reviews:</h3>
-                <ul className="list-disc ml-5">
-                  {comments.map((comment, index) => (
-                    <li key={index} className="mb-2">
-                      {comment}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
           </div>
-    
+
           <div className="lg:col-span-5 w-full mt-4">
-            <p className="font-semibold text-black text-3xl mb-3">{equipment.name}</p>
+            <p className="font-semibold text-black text-3xl mb-3">
+              {equipment.name}
+            </p>
             <p className="mb-4">{equipment.details}</p>
-            <p className="italic text-xl mb-4 text-green-800">{equipment.customization}</p>
-            <p className="font-bold text-green-800 mb-4"><span className="text-xl font-semibold text-gray-600">Processing Time:</span>   ({equipment.time})</p>
+            <p className="italic text-xl mb-4 text-green-800">
+              {equipment.customization}
+            </p>
+            <p className="font-bold text-green-800 mb-4">
+              <span className="text-xl font-semibold text-gray-600">
+                Processing Time:
+              </span>{" "}
+              ({equipment.time})
+            </p>
             <div className="md:flex md:items-center md:justify-between gap-5">
-              <h2 className="text-xl font-semibold text-green-500">${equipment.price}</h2>
+              <h2 className="text-xl font-semibold text-green-500">
+                ${equipment.price}
+              </h2>
               <p className="text-gray-500">({equipment.category})</p>
             </div>
 
@@ -101,11 +83,36 @@ const EquipmentDetails = () => {
                 {equipment.rating} ⭐
               </p>
             </div>
-
-            
           </div>
         </div>
+        <div>
+        <div className="mt-2 lg:flex items-center px-10 text-white">
+          <textarea
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder=" Write here Your Review..."
+            className="md:w-80 w-full h-32 border-2 rounded-lg p-4 bg-[#5f5e5e]"
+          />
+          <button
+            onClick={handleCommentSubmit}
+            className="bg-[#5C4E4E] px-4 py-3 text-white font-semibold rounded-lg ml-7"
+          >
+            Submit
+          </button>
+        </div>
+        <div className="mt-5 px-10">
+          <h3 className="text-lg font-bold mb-3">Reviews:</h3>
+          <ul className="list-disc ml-5">
+            {comments.map((comment, index) => (
+              <li key={index} className="mb-2">
+                {comment}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
+      </div>
+     
     </div>
   );
 };

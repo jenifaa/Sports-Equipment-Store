@@ -3,7 +3,7 @@ import Navbar from "./Navbar";
 import { AuthContext } from "../Main/AuthProvider";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-import iconImgLogin from '../../assets/google (1).png'
+import iconImgLogin from "../../assets/icons/google (1).png";
 import { Helmet } from "react-helmet";
 
 const Signin = () => {
@@ -30,11 +30,11 @@ const Signin = () => {
 
     const email = form.email.value;
     const password = form.password.value;
-   
+
     userLogin(email, password)
       .then((result) => {
         const user = result.user;
-       
+
         setUser(user);
 
         navigate(location?.state ? location.state : "/");

@@ -179,6 +179,7 @@ const AddEquipment = () => {
                 name="userName"
                 value={user?.displayName}
                 disabled
+                
                 className="input input-bordered w-full "
               />
             </label>

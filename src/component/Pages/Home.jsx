@@ -17,13 +17,13 @@ const Home = () => {
      <Banner></Banner>
 
      </div>
-     <EquipmentCards></EquipmentCards>
+      <EquipmentCards></EquipmentCards>
      
      
      <FamousEquipment></FamousEquipment>
     
      
-     <Reaction></Reaction>
+     <Reaction></Reaction> 
     </div>
   );
 };
