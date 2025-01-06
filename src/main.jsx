@@ -7,11 +7,11 @@ import "react-toastify/dist/ReactToastify.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayOut from "./component/Main/MainLayOut.jsx";
 import Home from "./component/Pages/Home.jsx";
-// import AddEquipment from "./component/Pages/AddEquipment.jsx";
-import Signin from "./component/Pages/Signin.jsx";
-import Signup from "./component/Pages/Signup.jsx";
+import AddEquipment from "./component/Pages/AddEquipment.jsx";
+
+
 import AuthProvider from "./component/Main/AuthProvider.jsx";
-// import Error from "./component/Main/Error.jsx";
+import Error from "./component/Main/Error.jsx";
 import All from "./component/Pages/All.jsx";
 // import EquipmentList from "./component/Pages/EquipmentList.jsx";
 // import UpdateEquipment from "./component/Pages/UpdateEquipment.jsx";
@@ -22,11 +22,13 @@ import Cart from "./component/Pages/Cart.jsx";
 import AboutUs from "./component/Pages/AboutUs.jsx";
 import ContactUs from "./component/Pages/ContactUs.jsx";
 import BlogPost from "./component/routes/BlogPost.jsx";
+import Signin from "./component/Authentication/Signin.jsx";
+import Signup from "./component/Authentication/Signup.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayOut></MainLayOut>,
-    // errorElement: <Error></Error>,
+    errorElement: <Error></Error>,
     children: [
       {
         path: "/",
@@ -44,11 +46,11 @@ const router = createBrowserRouter([
         path: "blog",
         element: <BlogPost></BlogPost>,
       },
-      // {
-      //   path: "add",
-      //   element: <AddEquipment></AddEquipment>,
-      //   loader: () => fetch('https://equipment-store-server.vercel.app/users')
-      // },
+      {
+        path: "add",
+        element: <AddEquipment></AddEquipment>,
+        loader: () => fetch('https://equipment-store-server.vercel.app/users')
+      },
       {
         path: "all",
         element: <All></All>,

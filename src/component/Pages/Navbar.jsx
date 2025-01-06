@@ -120,36 +120,11 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex space-x-6">{links}</div>
 
-        {/* <div className="lg:hidden">
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="focus:outline-none"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
-        </div> */}
+       
 
         <div className="flex md:flex-row flex-col items-center gap-2 lg:gap-5">
           {isHomepage && (
-            // <input
-            //   onClick={handleTheme}
-            //   type="checkbox"
-            //   value="synthwave"
-            //   className="toggle theme-controller"
-            // />
+          
             <label className="flex cursor-pointer gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -181,6 +156,7 @@ const Navbar = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
+               
                  
               >
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
@@ -191,7 +167,7 @@ const Navbar = () => {
             <img
               src={user?.photoURL}
               title={user?.displayName || "User"}
-              className="w-10 h-10 md:w-14 md:h-14 rounded-full md:flex"
+              className="w-10 h-10 md:w-12 md:h-12 rounded-full md:flex"
             ></img>
           ) : (
             <BsPersonCircle className="text-5xl" />
@@ -202,7 +178,7 @@ const Navbar = () => {
               <NavLink>
                 <button
                   onClick={logOut}
-                  className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md"
+                  className=" text-white text-lg border-white border-2 px-5 py-2 rounded-md"
                 >
                   LogOut
                 </button>
@@ -211,12 +187,12 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink to="/login">
-                <button className="px-4 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                <button  className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
                   Login
                 </button>
               </NavLink>
               <NavLink to="/register">
-                <button className="px-3 py-2 bg-[#FFFFFF] text-[#0575E6] rounded-md">
+                <button  className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
                   Register
                 </button>
               </NavLink>
@@ -226,7 +202,7 @@ const Navbar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="flex flex-col space-y-4 px-6 py-4 bg-[#071f10] lg:hidden"></div>
+        <div className="flex flex-col  space-y-4 px-6 py-4 bg-[#071f10] lg:hidden">{links}</div>
       )}
     </div>
   );

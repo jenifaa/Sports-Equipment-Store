@@ -3,7 +3,7 @@ import React from "react";
 
 import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
-const Slide = ({ image, text1, text2}) => {
+const Slide = ({ image, text1, text2,text3}) => {
   return (
     <div
       className="w-full bg-center bg-cover h-[32rem]"
@@ -12,10 +12,11 @@ const Slide = ({ image, text1, text2}) => {
       }}
     >
       <div className="absolute inset-0 bg-gray-900/70 flex justify-start">
-        <div className=" text-white md:px-10 flex-1 font">
+        <div className=" text-white md:px-10 flex-1 mt-36 font">
+            <h1 className="md:px-12">{text3}</h1>
           <motion.h1
           
-            className="text-[#F8D7C4] text-start text-3xl  lg:text-5xl font-bold mt-36"
+            className="text-[#FF6F61] text-start text-3xl  lg:text-5xl font-bold "
           >
             {text1}
           </motion.h1>

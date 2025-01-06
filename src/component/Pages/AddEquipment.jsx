@@ -3,6 +3,7 @@ import { useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../Main/AuthProvider";
 import helmet from "helmet";
+import bg from "../../assets/images/11065.jpg";
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
 
@@ -11,7 +12,7 @@ const AddEquipment = () => {
     const form = event.target;
     const name = form.name.value;
     const rating = form.rating.value;
-    const price = form.price.value;
+    const price = Number(form.price.value);
     const customization = form.customization.value;
     const category = form.category.value;
     const details = form.details.value;
@@ -44,8 +45,8 @@ const AddEquipment = () => {
       .then((data) => {
         if (data.insertedId) {
           Swal.fire({
-            title: "Success!",
-            text: "Do you want to continue",
+            title: "Added!",
+            text: "Your Equipment added.",
             icon: "success",
             confirmButtonText: "Cool",
           });
@@ -54,14 +55,23 @@ const AddEquipment = () => {
   };
 
   return (
-    <div>
-      <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
-        <div className="text-center my-5">
-          <h1 className="font-bold text-3xl mb-10">Add New Equipment</h1>
+    <div
+      style={{
+        backgroundImage: `url('${bg}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      
+        // height: "100vh",
+      }}
+      className=" pt-16 pb-10 "
+    >
+      <div className="w-10/12 md:w-8/12 mx-auto bg-white border-4 border-gray-300 p-6 rounded-lg shadow-lg  px-10  py-10 mt-20">
+        <div className="text-center ">
+          <h1 className="font-bold text-3xl md:text-5xl ">Add New Equipment</h1>
         </div>
 
         <form onSubmit={handleAddEquipment}>
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Name</span>
@@ -85,7 +95,7 @@ const AddEquipment = () => {
               />
             </label>
           </div>
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Price</span>
@@ -109,7 +119,7 @@ const AddEquipment = () => {
               />
             </label>
           </div>
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Processing Time</span>
@@ -133,7 +143,7 @@ const AddEquipment = () => {
               />
             </label>
           </div>
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Category</span>
@@ -157,7 +167,7 @@ const AddEquipment = () => {
               />
             </label>
           </div>
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">User Email</span>
@@ -166,7 +176,7 @@ const AddEquipment = () => {
                 type="text"
                 name="userEmail"
                 value={user?.email}
-                disabled
+                readOnly
                 className="input input-bordered w-full "
               />
             </label>
@@ -178,14 +188,13 @@ const AddEquipment = () => {
                 type="text"
                 name="userName"
                 value={user?.displayName}
-                disabled
-                
+                readOnly
                 className="input input-bordered w-full "
               />
             </label>
           </div>
 
-          <div className="md:flex justify-between gap-6 items-center my-5">
+          <div className="md:flex justify-between gap-10 items-center my-5">
             <label className="form-control w-full ">
               <div className="label">
                 <span className="label-text">Photo</span>

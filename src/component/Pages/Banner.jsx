@@ -14,7 +14,7 @@ import { motion } from "framer-motion";
 import { easeOut } from "framer-motion";
 import Typewriter from "typewriter-effect";
 import Lottie from "lottie-react";
-import lottie from "../../assets/Animation - 1733508384416.json";
+
 import Slide from "../Slider/Slide";
 
 const Banner = () => {
@@ -37,6 +37,9 @@ const Banner = () => {
       <SwiperSlide>
         <Slide
           image={bg3}
+          text3={<>
+          <span className="text-sm">--Welcome to SportZone</span>
+          </>}
           text1={
             <>
               <span className="leading-normal">
@@ -72,6 +75,9 @@ const Banner = () => {
       <SwiperSlide>
         <Slide
           image={bg2}
+          text3={<>
+            <span className="text-sm">--Welcome to SportZone</span>
+            </>}
           text1={
             <>
               <span className="leading-normal">
@@ -107,6 +113,9 @@ const Banner = () => {
       <SwiperSlide>
         <Slide
           image={bg1}
+          text3={<>
+            <span className="text-sm">--Welcome to SportZone</span>
+            </>}
           text1={
             <>
               <span className="leading-normal">
