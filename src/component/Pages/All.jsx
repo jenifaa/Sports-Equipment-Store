@@ -60,33 +60,25 @@ const All = () => {
             </label>
           </div>
         </div>
-        <button
-          // onClick={handleSort}
-          className="px-5 py-2 bg-[#2a0909] text-white font-bold"
-        >
-          Sort by Price
-        </button>
-        <button
-          // onClick={handleSort}
-          className="px-5 py-2 bg-[#2a0909] text-white font-bold"
-        >
-          Sort by Price
-        </button>
-        <button
-          // onClick={handleSort}
-          className="px-5 py-2 bg-[#2a0909] text-white font-bold"
-        >
-          Search
-        </button>
-        <button
-          // onClick={handleSort}
-          className="px-5 py-2 bg-[#2a0909] text-white font-bold"
-        >
-          Grid layout
-        </button>
+        <div className="dropdown dropdown-hover">
+          <div tabIndex={0} role="button" className="btn m-1">
+            Sort by Price
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+          >
+            <li>
+              <a>Ascending</a>
+            </li>
+            <li>
+              <a>Descending</a>
+            </li>
+          </ul>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md;grid-cols-2 lg:grid-cols-4 gap-12 py-16 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 px-10">
         {users
           .filter((user) => {
             return search.toLowerCase() === ""

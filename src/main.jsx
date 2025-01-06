@@ -19,6 +19,9 @@ import All from "./component/Pages/All.jsx";
 import EquipmentDetails from "./component/Pages/EquipmentDetails.jsx";
 import PrivateRoutes from "./component/Main/PrivateRoutes.jsx";
 import Cart from "./component/Pages/Cart.jsx";
+import AboutUs from "./component/Pages/AboutUs.jsx";
+import ContactUs from "./component/Pages/ContactUs.jsx";
+import BlogPost from "./component/routes/BlogPost.jsx";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +31,18 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
+      },
+      {
+        path: "about",
+        element: <AboutUs></AboutUs>,
+      },
+      {
+        path: "contact",
+        element: <ContactUs></ContactUs>,
+      },
+      {
+        path: "blog",
+        element: <BlogPost></BlogPost>,
       },
       // {
       //   path: "add",
