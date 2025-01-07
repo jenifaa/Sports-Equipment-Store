@@ -7,6 +7,9 @@ import FamousEquipment from "./FamousEquipment";
 import Loading from "./Loading";
 
 import Reaction from "./Reaction";
+import FAQ from "./Home/FAQ";
+import DownLoad from "../routes/DownLoad";
+import OurPartner from "../routes/OurPartner";
 const Home = () => {
     
   return (
@@ -22,9 +25,12 @@ const Home = () => {
      
      
      <FamousEquipment></FamousEquipment>
+     <FAQ></FAQ>
     
      
      <Reaction></Reaction> 
+     <OurPartner></OurPartner>
+     <DownLoad></DownLoad>
     </div>
   );
 };

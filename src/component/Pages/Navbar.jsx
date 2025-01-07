@@ -26,40 +26,56 @@ const Navbar = () => {
         Contact Us
       </NavLink>
 
-      <div className="dropdown dropdown-bottom">
-        <div tabIndex={0} role="button" className="flex items-center gap-1">
-          Equipment <IoIosArrowDown></IoIosArrowDown>
+      {user && user?.email ? (
+        <div className="dropdown dropdown-bottom">
+          <div tabIndex={0} role="button" className="flex items-center gap-1">
+            Equipment <IoIosArrowDown></IoIosArrowDown>
+          </div>
+          <ul
+            tabIndex={0}
+            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+          >
+            {user && user?.email ? (
+              <>
+                <NavLink
+                  to="/add"
+                  className="hover:text-[#A67C52] hover:font-bold my-3 text-black "
+                >
+                  Add Equipment
+                </NavLink>
+              </>
+            ) : (
+              ""
+            )}
+            {user && user?.email ? (
+              <>
+                <NavLink
+                  to="/list"
+                  className="hover:text-[#A67C52] text-black mb-3 hover:font-bold "
+                >
+                  My Equipment List
+                </NavLink>
+              </>
+            ) : (
+              ""
+            )}
+            {user && user?.email ? (
+              <>
+                <NavLink
+                  to="/allData"
+                  className="hover:text-[#A67C52] text-black hover:font-bold "
+                >
+                  All Equipments table
+                </NavLink>
+              </>
+            ) : (
+              ""
+            )}
+          </ul>
         </div>
-        <ul
-          tabIndex={0}
-          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-        >
-          {user && user?.email ? (
-            <>
-              <NavLink
-                to="/add"
-                className="hover:text-[#A67C52] hover:font-bold my-5 text-black "
-              >
-                Add Equipment
-              </NavLink>
-            </>
-          ) : (
-            ""
-          )}
-          {user && user?.email ? (
-            <>
-              <NavLink
-                to="/list"
-                className="hover:text-[#A67C52] text-black hover:font-bold "
-              >
-                My Equipment List
-              </NavLink>
-            </>
-          ) : (
-            ""
-          )}
-        </ul>
-      </div>
+      ) : (
+        " "
+      )}
 
       <NavLink to="/blog" className="hover:text-[#A67C52] hover:font-bold ">
         Our Blog

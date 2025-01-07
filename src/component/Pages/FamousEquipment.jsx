@@ -17,7 +17,7 @@ const FamousEquipment = () => {
   }, []);
 
   return (
-    <div className="bg-base-300">
+    <div className="bg-base-300 pb-5">
       <p className="text-sm text-orange-600 text-center mb-2">
         -- get discount on your desire products
       </p>

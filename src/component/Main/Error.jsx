@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import errorImg from '../../assets/images/error2.avif'
 
 const Error = () => {
@@ -6,7 +7,7 @@ const Error = () => {
             <div className='flex justify-center items-center'>
             <img className='w-10/12 mx-auto h-[500px] my-20 md:h-[700px]' src={errorImg} alt="" />
             </div>
-            {/* <h2 className='text-center font-bold md:text-5xl text-red-800'>Page Not Found...</h2> */}
+           <div className='flex justify-center items-center'><Link className='px-4 py-2 bg-[#5c4e4e] my-5 text-white' to='/'>Go Home</Link></div>
         </div>
     );
 };

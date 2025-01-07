@@ -42,22 +42,29 @@ const Reaction = () => {
   }, []);
 
   const getRandomPosition = () => ({
-    top: `${Math.random() * 80}%`, 
-    left: `${Math.random() * 80}%`, 
+    top: `${Math.random() * 80}%`,
+    left: `${Math.random() * 80}%`,
   });
 
   return (
-    <div>
-      <div className="flex items-center gap-5 justify-center">
-      <h2 className="my-10 text-center font-bold text-5xl">
-        <span className="text-7xl italic text-red-800">L</span>ove From Our Customers
+    <div className="py-10">
+      <p className="text-sm text-orange-600 text-center">
+        -- Love From customers
+      </p>
+      <h2 className="mb-10 text-center font font-bold text-5xl">
+        <span className="text-7xl italic text-red-800">L</span>ove From Our
+        Customers
       </h2>
       {/* <img className="w-10 pt-2" src={heart} alt="" /> */}
-      </div>
+
       <p className="text-center text-sm text-gray-600 mb-8">
-        Discover what our customers love the most! Our top-rated products are known for their outstanding quality, durability, and performance. <br /> Don't miss out on the best products that have made a difference in countless lives. Take a look at some of the amazing <br /> reviews from our satisfied customers.
+        Discover what our customers love the most! Our top-rated products are
+        known for their outstanding quality, durability, and performance. <br />{" "}
+        Don't miss out on the best products that have made a difference in
+        countless lives. Take a look at some of the amazing <br /> reviews from
+        our satisfied customers.
       </p>
-      <div className="relative h-[600px] w-full overflow-hidden ">
+      <div className="relative h-[500px] w-full overflow-hidden ">
         <div className="absolute w-full h-full">
           {comments.map((comment, index) => (
             <div

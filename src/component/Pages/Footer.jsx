@@ -57,7 +57,7 @@ const Footer = () => {
       
         <footer className="footer footer-center  p-4">
           <aside>
-            <p>
+            <p className="text-white">
               Copyright © {new Date().getFullYear()} - All right reserved by
               ACME Industries Ltd
             </p>

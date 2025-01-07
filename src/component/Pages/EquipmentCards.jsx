@@ -38,16 +38,16 @@ const EquipmentCards = () => {
       <p className="text-sm text-orange-600 text-center mb-2">
         -- buy your desire products
       </p>
-      <h2 className="text-6xl mb-5  font font-bold text-center">
+      <h2 className="text-6xl mb-4  font font-bold text-center">
         Our Equipments
       </h2>
-      <p className="text-center font-semibold text-gray-500 text-sm mb-10">
+      <p className="text-center font-semibold text-gray-500 text-sm mb-3">
         Explore our diverse collection of high-quality equipment designed to
         meet all your needs. Whether you're a professional or a hobbyist,
         <br /> we have the perfect tools to help you succeed.
       </p>
 
-      <div className="flex justify-center items-center md:flex-row flex-col gap-3 md:gap-10 md:py-10">
+      <div className="flex justify-center items-center md:flex-row flex-col gap-3 md:gap-10 md:py-5">
         <button
           className={`text-xl px-5 py-3 rounded-md ${
             activeTab === "All"
