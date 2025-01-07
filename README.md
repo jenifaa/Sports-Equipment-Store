@@ -29,6 +29,11 @@ The **Sports-Equipment-Store** is a platform designed to showcase and manage a w
 
 ---
 
+## **📷 OverView**
+![Product Recommendation System Screenshot](https://i.ibb.co.com/CtXZBLf/project6.png)
+
+---
+
 ### **Technologies Used:**
 - **Frontend**: React, React Router, Tailwind CSS
 - **Authentication**: Firebase Authentication
