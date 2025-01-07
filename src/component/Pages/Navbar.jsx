@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AuthProvider, { AuthContext } from "../Main/AuthProvider";
 import Loading from "./Loading";
 import { BsPersonCircle } from "react-icons/bs";
-
+import { IoIosArrowDown } from "react-icons/io";
 const Navbar = () => {
   const { user, setUser, logOut, updateUserProfile, loading } =
     useContext(AuthContext);
@@ -16,53 +16,52 @@ const Navbar = () => {
       >
         Home
       </NavLink>
-      <NavLink
-        to="/all"
-        className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-      >
+      <NavLink to="/all" className="hover:text-[#A67C52] hover:font-bold  ">
         All Equipments
       </NavLink>
-      <NavLink
-        to="/about"
-        className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-      >
+      <NavLink to="/about" className="hover:text-[#A67C52] hover:font-bold ">
         About Us
       </NavLink>
-      <NavLink
-        to="/contact"
-        className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-      >
+      <NavLink to="/contact" className="hover:text-[#A67C52] hover:font-bold ">
         Contact Us
       </NavLink>
 
-      {user && user?.email ? (
-        <>
-          <NavLink
-            to="/add"
-            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-          >
-            Add Equipment
-          </NavLink>
-        </>
-      ) : (
-        ""
-      )}
-      {user && user?.email ? (
-        <>
-          <NavLink
-            to="/list"
-            className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-          >
-            My Equipment List
-          </NavLink>
-        </>
-      ) : (
-        ""
-      )}
-      <NavLink
-        to="/blog"
-        className="hover:text-[#A67C52] hover:font-bold hover:text-xl "
-      >
+      <div className="dropdown dropdown-bottom">
+        <div tabIndex={0} role="button" className="flex items-center gap-1">
+          Equipment <IoIosArrowDown></IoIosArrowDown>
+        </div>
+        <ul
+          tabIndex={0}
+          className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
+        >
+          {user && user?.email ? (
+            <>
+              <NavLink
+                to="/add"
+                className="hover:text-[#A67C52] hover:font-bold my-5 text-black "
+              >
+                Add Equipment
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
+          {user && user?.email ? (
+            <>
+              <NavLink
+                to="/list"
+                className="hover:text-[#A67C52] text-black hover:font-bold "
+              >
+                My Equipment List
+              </NavLink>
+            </>
+          ) : (
+            ""
+          )}
+        </ul>
+      </div>
+
+      <NavLink to="/blog" className="hover:text-[#A67C52] hover:font-bold ">
         Our Blog
       </NavLink>
     </>
@@ -120,11 +119,8 @@ const Navbar = () => {
         </div>
         <div className="hidden lg:flex space-x-6">{links}</div>
 
-       
-
         <div className="flex md:flex-row flex-col items-center gap-2 lg:gap-5">
           {isHomepage && (
-          
             <label className="flex cursor-pointer gap-2">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -156,8 +152,6 @@ const Navbar = () => {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-               
-                 
               >
                 <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
               </svg>
@@ -187,12 +181,12 @@ const Navbar = () => {
           ) : (
             <>
               <NavLink to="/login">
-                <button  className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
+                <button className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
                   Login
                 </button>
               </NavLink>
               <NavLink to="/register">
-                <button  className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
+                <button className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
                   Register
                 </button>
               </NavLink>
@@ -202,7 +196,9 @@ const Navbar = () => {
       </nav>
 
       {menuOpen && (
-        <div className="flex flex-col  space-y-4 px-6 py-4 bg-[#071f10] lg:hidden">{links}</div>
+        <div className="flex flex-col  space-y-4 px-6 py-4 bg-[#071f10] lg:hidden">
+          {links}
+        </div>
       )}
     </div>
   );

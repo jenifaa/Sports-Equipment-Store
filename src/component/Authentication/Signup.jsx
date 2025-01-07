@@ -6,9 +6,10 @@ import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import iconImg from "../../assets/icons/google (1).png";
 import lottiSignUp from "../../assets/images/Sign up-rafiki.png";
-import { Helmet } from "react-helmet";
+
 import Navbar from "../Pages/Navbar";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const Signup = () => {
   const { creatNewUser, setUser, setLoading, userUpdate, signInWithGoogle } =

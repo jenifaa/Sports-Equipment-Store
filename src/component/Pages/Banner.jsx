@@ -20,7 +20,7 @@ import Slide from "../Slider/Slide";
 const Banner = () => {
   return (
     <Swiper
-      className="mySwiper mt-20"
+      className="mySwiper mt-36 md:mt-20"
       spaceBetween={30}
       centeredSlides={true}
       loop={true}

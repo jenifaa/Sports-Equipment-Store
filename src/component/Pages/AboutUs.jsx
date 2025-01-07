@@ -1,9 +1,13 @@
 import React from "react";
 import image from "../../assets/images/About us page-pana.png";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 const AboutUs = () => {
   return (
     <section className="bg-base-200 py-24">
+        <Helmet>
+            <title>SportZone | About Us</title>
+        </Helmet>
       <div className="container mx-auto px-6 md:px-12 lg:px-20">
         <h2 className="text-5xl font-extrabold text-center text-gray-800 md:text-6xl font lg:text-7xl">
           About Us

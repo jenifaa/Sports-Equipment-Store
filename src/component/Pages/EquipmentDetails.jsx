@@ -1,7 +1,8 @@
 import { useLoaderData, useParams } from "react-router-dom";
 import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet-async";
+
 
 const EquipmentDetails = () => {
   const data = useLoaderData();
@@ -38,7 +39,7 @@ const EquipmentDetails = () => {
   return (
     <div>
       <Helmet>
-        <title>Details</title>
+        <title>SportZone | Details</title>
       </Helmet>
       <Navbar></Navbar>
       <div className="md:w-11/12 w-full mx-auto mb-24 bg-base-200 px-10 py-10 my-40 md:my-10">
@@ -48,7 +49,7 @@ const EquipmentDetails = () => {
               <img
                 src={equipment.photo}
                 alt={equipment.name}
-                className="rounded-xl w-full md:h-[400px] lg:w-[450px] "
+                className="rounded-xl w-full   md:h-[400px] lg:w-[450px] "
               />
             </figure>
           </div>

@@ -5,9 +5,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import iconImgLogin from "../../assets/icons/google (1).png";
 import loginLottie from "../../assets/lottie/login.json";
-import { Helmet } from "react-helmet";
+
 import Navbar from "../Pages/Navbar";
 import Lottie from "lottie-react";
+import { Helmet } from "react-helmet-async";
 
 const Signin = () => {
   const { userLogin, setUser, setUserLogin, signInWithGoogle } =

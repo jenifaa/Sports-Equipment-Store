@@ -4,6 +4,7 @@ import Swal from "sweetalert2";
 import { AuthContext } from "../Main/AuthProvider";
 import helmet from "helmet";
 import bg from "../../assets/images/11065.jpg";
+import { Helmet } from "react-helmet-async";
 const AddEquipment = () => {
   const { user } = useContext(AuthContext);
 
@@ -12,7 +13,7 @@ const AddEquipment = () => {
     const form = event.target;
     const name = form.name.value;
     const rating = form.rating.value;
-    const price = Number(form.price.value);
+    const price = form.price.value;
     const customization = form.customization.value;
     const category = form.category.value;
     const details = form.details.value;
@@ -31,6 +32,8 @@ const AddEquipment = () => {
       photo,
       quantity,
       time,
+      userEmail,
+      userName
     };
 
     form.reset();
@@ -65,6 +68,9 @@ const AddEquipment = () => {
       }}
       className=" pt-16 pb-10 "
     >
+      <Helmet>
+        <title>SportZone | Add Equipments</title>
+      </Helmet>
       <div className="w-10/12 md:w-8/12 mx-auto bg-white border-4 border-gray-300 p-6 rounded-lg shadow-lg  px-10  py-10 mt-20">
         <div className="text-center ">
           <h1 className="font-bold text-3xl md:text-5xl ">Add New Equipment</h1>

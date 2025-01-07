@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet";
+
 import { Rating, ThinStar } from "@smastrom/react-rating";
 
 import "@smastrom/react-rating/style.css";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const All = () => {
   const loadedData = useLoaderData();
@@ -14,30 +15,16 @@ const All = () => {
   const [equipment, setEquipment] = useState([]);
   const [users, setUsers] = useState(loadedData);
   console.log(users);
-  const [sortDirection, setSortDirection] = useState(1);
-
-  // const handleSort = () => {
-  //   const newSortDirection = sortDirection === 1 ? -1 : 1;
-  //   setSortDirection(newSortDirection);
-
-  //   fetch(
-  //     `https://equipment-store-server.vercel.app/equipment`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => {
-  //       setUsers(data);
-  //     })
-  //     .catch((error) => console.error("Error fetching sorted data:", error));
-  // };
+  const [sortDirection, setSortDirection] = useState(null);
 
   return (
     <div className="bg-base-300">
       <Helmet>
         <title>SportZone | All Equipments </title>
       </Helmet>
-      <div className="flex justify-center items-center gap-10 pt-24">
-        <div className="md:flex items-center  justify-center gap-5">
-          <div className="w-96  my-10">
+      <div className="md:flex md:justify-center items-center gap-10 pt-24">
+        <div className="md:flex items-center  md:justify-center gap-5">
+          <div className="md:w-96 px-8  my-10">
             <label className="input input-bordered flex items-center gap-2">
               <input
                 onChange={(e) => setSearch(e.target.value)}
@@ -59,22 +46,6 @@ const All = () => {
               </svg>
             </label>
           </div>
-        </div>
-        <div className="dropdown dropdown-hover">
-          <div tabIndex={0} role="button" className="btn m-1">
-            Sort by Price
-          </div>
-          <ul
-            tabIndex={0}
-            className="dropdown-content menu bg-base-100 rounded-box z-[1] w-52 p-2 shadow"
-          >
-            <li>
-              <a>Ascending</a>
-            </li>
-            <li>
-              <a>Descending</a>
-            </li>
-          </ul>
         </div>
       </div>
 
@@ -121,7 +92,7 @@ const All = () => {
               <p className="font-bold text-xl text-green-600">$ {user.price}</p>
 
               <div>
-                <Link to={`/equipment/${equipment._id}`}>
+                <Link to={`/equipment/${user._id}`}>
                   <button className="px-4 py-2 bg-[#5C4E4E] text-white font-bold my-2">
                     View Details
                   </button>

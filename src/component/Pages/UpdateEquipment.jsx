@@ -59,11 +59,11 @@ const UpdateEquipment = () => {
 
   
   return (
-    <div>
+    <div className="bg-base-200 pt-14">
       <Navbar></Navbar>
-      <div className="w-10/12 mx-auto bg-base-200 px-10 md:px-32 py-10 my-20">
+      <div className="w-10/12 mx-auto bg-white px-10 md:px-32 py-10 my-20">
         <div className="text-center my-5">
-          <h1 className="font-bold text-3xl mb-10">Update Equipment</h1>
+          <h1 className="font-bold text-5xl mb-10">Update Equipment</h1>
         </div>
 
         <form onSubmit={handleUpdateUser}>
@@ -172,7 +172,7 @@ const UpdateEquipment = () => {
                 type="text"
                 name="userEmail"
                 value={user?.email}
-                disabled
+                readOnly
                 className="input input-bordered w-full "
               />
             </label>
@@ -184,7 +184,7 @@ const UpdateEquipment = () => {
                 type="text"
                 name="userName"
                 value={user?.displayName}
-                disabled
+                readOnly
                 className="input input-bordered w-full "
               />
             </label>
