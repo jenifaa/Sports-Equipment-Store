@@ -33,13 +33,13 @@ const FamousEquipment = () => {
         </p>
       </Fade>
       <div className="py-5">
-        <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 w-10/12 md:w-9/12 mx-auto gap-10 lg:gap-20 pt-10 pb-10">
-          {famousEquipments.slice(4, 7).map((famous) => (
+        <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 w-10/12 md:w-8/12 mx-auto gap-10 lg:gap-7 pt-10 pb-10">
+          {famousEquipments.slice(2, 6).map((famous) => (
             <Famous key={famous._id} famous={famous}></Famous>
           ))}
         </div>
-        <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-3 w-10/12 md:w-9/12 mx-auto gap-10 lg:gap-20 pt-10 pb-10">
-          {famousEquipments.slice(8, 10).map((equip) => (
+        <div className="grid sm:grid-cols-2 grid-cols-1 lg:grid-cols-4 w-10/12 md:w-8/12 mx-auto gap-10 lg:gap-7 pt-10 pb-10">
+          {famousEquipments.slice(6, 10).map((equip) => (
             <EquipCard key={equip._id} equip={equip}></EquipCard>
           ))}
         </div>

@@ -9,14 +9,14 @@ const AllDataTable = () => {
     fetch("https://equipment-store-server.vercel.app/equipment")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+      
         setAllDataTable(data);
       });
   }, []);
   return (
     <div className="mt-32">
-      <h2 className="text-center text-4xl">All Equipments table</h2>
-      <div>
+      <h2 className="text-center font-bold my-8 font text-4xl">All Equipments table</h2>
+      <div className="my-10">
         <div className="overflow-x-auto">
           <table className="table">
             {/* head */}

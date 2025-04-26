@@ -114,22 +114,22 @@ const EquipCard = ({ equip }) => {
     <div className="bg-[#ffffff]">
       <div>
         <div className="relative">
-          <img className="px-5 w-full h-[200px] py-4 " src={photo} alt="" />
+          <img className="px-5 w-full h-[180px] py-4 " src={photo} alt="" />
           <img
-            className="w-24 absolute -top-7 -ml-10"
+            className="w-20 absolute -top-4 -ml-6"
             src={discountIcon}
             alt=""
           />
         </div>
         <hr />
-        <div className="px-4">
+        <div className="bg-white p-4 flex flex-col min-h-[170px]">
           <h2 className="text-xl font-semibold my-3">{name}</h2>
           <p>{customization}</p>
-          <div className="flex justify-between items-center py-2">
-            <p className="text-xl font-semibold  text-green-600">${price}</p>
+          <div className="mt-auto flex justify-between items-center ">
+            <p className="text-xl font-semibold text-green-600">${price}</p>
             <button
               onClick={handleBuyProduct}
-              className="font-bold bg-[#5C4E4E] px-3 py-2 text-[#ffffff]"
+              className="font-bold bg-[#5C4E4E] px-3 py-2 text-white flex-shrink-0"
             >
               Buy Now
             </button>

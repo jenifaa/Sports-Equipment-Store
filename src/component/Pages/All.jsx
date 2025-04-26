@@ -14,7 +14,7 @@ const All = () => {
 
   const [equipment, setEquipment] = useState([]);
   const [users, setUsers] = useState(loadedData);
-  console.log(users);
+
   const [sortDirection, setSortDirection] = useState(null);
 
   return (
@@ -49,7 +49,7 @@ const All = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-16 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-5 mx-auto w-10/12 pb-12">
         {users
           .filter((user) => {
             return search.toLowerCase() === ""
@@ -57,48 +57,38 @@ const All = () => {
               : user.name.toLowerCase().includes(search);
           })
           .map((user) => (
-            <div key={user._id} className="border p-3 rounded-xl bg-[#ffffff]">
-              <div>
-                <img
-                  className="w-full h-44 rounded-xl"
-                  src={user.photo}
-                  alt=""
+            <div key={user._id} className="border p-3 rounded-xl bg-[#ffffff] flex flex-col h-full">
+            <div>
+              <img className="w-full h-44 rounded-xl" src={user.photo} alt="" />
+            </div>
+            <h2 className="card-title flex items-center gap-3">{user.name}</h2>
+          
+            <div className="">
+              {/* <p className="mt-2 font-semibold text-orange-800">{user.customization}</p> */}
+              <div className="mt-2 flex items-center gap-2">
+                <Rating
+                  className=""
+                  style={{ maxWidth: 90 }}
+                  value={user.rating}
+                  readOnly
                 />
-              </div>
-              <h2 className="card-title flex items-center gap-3">
-                {user.name}
-              </h2>
-
-              <div className="">
-                <p className="mt-2 font-semibold text-orange-800">
-                  {user.customization}
-                </p>
-                <div className="mt-2 flex items-center gap-2">
-                  <Rating
-                    className=""
-                    style={{ maxWidth: 90 }}
-                    value={user.rating}
-                    readOnly
-                  />
-
-                  <span className="text-sm text-gray-500">({user.rating})</span>
-                </div>
-              </div>
-
-              <p className="font-bold text-orange-600">
-                {user.quantity} Available
-              </p>
-
-              <p className="font-bold text-xl text-green-600">$ {user.price}</p>
-
-              <div>
-                <Link to={`/equipment/${user._id}`}>
-                  <button className="px-4 py-2 bg-[#5C4E4E] text-white font-bold my-2">
-                    View Details
-                  </button>
-                </Link>
+                <span className="text-sm text-gray-500">({user.rating})</span>
               </div>
             </div>
+          
+            <p className="font-bold text-orange-600">{user.quantity} Available</p>
+          
+            <p className="font-bold text-xl text-green-600">$ {user.price}</p>
+          
+            <div className="mt-auto">
+              <Link to={`/equipment/${user._id}`}>
+                <button className="px-4 py-2 bg-[#5C4E4E] text-white font-bold w-full">
+                  View Details
+                </button>
+              </Link>
+            </div>
+          </div>
+          
           ))}
       </div>
     </div>

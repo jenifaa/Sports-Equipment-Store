@@ -20,7 +20,7 @@ const EquipmentList = () => {
     )
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+       
         setMyEquipments(data);
       });
   }, [user?.email]);

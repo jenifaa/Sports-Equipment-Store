@@ -16,7 +16,7 @@ const Slide = ({ image, text1, text2,text3}) => {
             <h1 className="md:px-12">{text3}</h1>
           <motion.h1
           
-            className="text-[#FF6F61] text-start text-3xl  lg:text-5xl font-bold "
+            className="text-[#b1d6f2] text-start text-3xl  lg:text-5xl font-bold "
           >
             {text1}
           </motion.h1>

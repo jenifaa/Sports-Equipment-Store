@@ -11,10 +11,10 @@ const ContactUs = () => {
       <h2 className="text-6xl mb-5 font font-bold text-center">Contact Us</h2>
       <div className="md:flex justify-between items-center mb-5">
         <Lottie className="md:w-96 flex-1" animationData={about}></Lottie>
-        <div className="bg-base-200 flex-1 p-6 mx-8 rounded-lg shadow-md text-center">
+        <div className="bg-base-200 flex-1 p-6 mx-8 rounded-lg shadow-md ">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Find Us</h2>
 
-          <div className="text-left mx-auto max-w-sm">
+          <div className="  max-w-sm">
             <p className="mb-2">
               <span className="font-bold">📞 WhatsApp:</span> +1 (234) 567-890
             </p>
@@ -35,7 +35,7 @@ const ContactUs = () => {
           <p className="text-gray-700 italic mt-2">
             ✨ We’re here to assist you 24/7! ✨
           </p>
-          <button className="btn btn-primary mt-4">
+          <button className="btn bg-[#331A15] text-white mt-4">
             <Link to="https://mail.google.com/mail/u/0/#inbox">Contact Us</Link>
           </button>
         </div>

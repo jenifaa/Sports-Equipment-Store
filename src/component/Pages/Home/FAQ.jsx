@@ -8,7 +8,7 @@ const FAQ = () => {
       <div className="md:flex justify-between items-center gap-10 md:gap-20 w-11/12 mx-auto">
         <div className="md:w-1/2">
           <img className="relative" src={img} alt="" />
-          <Link to="https://youtu.be/hmFQqjMF_f0?si=AAApqNLBCRZmik-G" className="flex items-center gap-1 px-8 py-5 md:ml-44  bg-primary absolute lg:ml-[450px] text-2xl -mt-10 text-white"><MdSlowMotionVideo></MdSlowMotionVideo>Explore More...</Link>
+          <Link to="https://youtu.be/hmFQqjMF_f0?si=AAApqNLBCRZmik-G" className="flex items-center gap-1 px-8 py-5 md:ml-44  bg-[#5C4E4E] absolute lg:ml-[450px] text-2xl -mt-10 text-white"><MdSlowMotionVideo></MdSlowMotionVideo>Explore More...</Link>
         </div>
         <div className="md:w-1/2 mt-11 md:mt-1">
           <p className="text-sm text-orange-600 text-center mb-2">
@@ -17,7 +17,7 @@ const FAQ = () => {
           <h2 className="text-center md:text-7xl text-5xl mb-5 font-bold font ">FAQ</h2>
           <h2 className="text-4xl font-bold my-3 px-5">
             Quick Answer <br />
-            Quick <span className="text-blue-700 text-4xl">Solution</span>
+            Quick <span className="text-[#5C4E4E] text-4xl">Solution</span>
           </h2>
           <div>
             <div className="collapse collapse-arrow bg-base-200">

@@ -47,9 +47,9 @@ const EquipmentCards = () => {
         <br /> we have the perfect tools to help you succeed.
       </p>
 
-      <div className="flex justify-center items-center md:flex-row flex-col gap-3 md:gap-10 md:py-5">
+      <div className="flex justify-center items-center md:flex-row flex-col gap-3 md:gap-5 md:py-3">
         <button
-          className={`text-xl px-5 py-3 rounded-md ${
+          className={`text-xl w-36 px-3 py-2 rounded-md ${
             activeTab === "All"
               ? "font-bold text-white bg-[#282222]"
               : "text-white bg-[#5C4E4E]"
@@ -61,7 +61,7 @@ const EquipmentCards = () => {
         {categories.map((category, index) => (
           <button
             key={index}
-            className={`text-xl px-5 py-3 rounded-md ${
+            className={`text-xl w-36 px-3 py-2 rounded-md ${
               activeTab === category
                 ? "font-bold text-white bg-[#282222]"
                 : "text-white bg-[#5C4E4E]"
@@ -74,7 +74,7 @@ const EquipmentCards = () => {
       </div>
 
       <div className="py-5">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-4 px-14 gap-16 my-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 w-9/12 mx-auto lg:grid-cols-4 px-14 gap-6 mt-5 mb-10">
           {filteredEquipments.length > 0 ? (
             filteredEquipments.map((equipment) => (
               <EquipmentCard key={equipment._id} equipment={equipment} />

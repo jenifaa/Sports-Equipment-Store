@@ -4,10 +4,10 @@ import Navbar from "./Navbar";
 const Cart = () => {
   const [carts, setCarts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/cart")
+    fetch("https://equipment-store-server.vercel.app/cart")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        
         setCarts(data);
       });
   }, []);
@@ -23,7 +23,7 @@ const Cart = () => {
            key={index}
            className="p-4 bg-gray-100 rounded-lg shadow flex items-center gap-20"
          >
-           {/* name, rating, price, customization, category, photo, quantity, */}
+          
            <div>
              <img className="w-28 " src={cart.photo} alt="" />
            </div>

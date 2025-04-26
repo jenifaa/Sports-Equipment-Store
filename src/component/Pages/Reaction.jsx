@@ -51,9 +51,8 @@ const Reaction = () => {
       <p className="text-sm text-orange-600 text-center">
         -- Love From customers
       </p>
-      <h2 className="mb-10 text-center font font-bold text-5xl">
-        <span className="text-7xl italic text-red-800">L</span>ove From Our
-        Customers
+      <h2 className="mb-5 text-center font font-bold text-5xl">
+        Love From Our Customers
       </h2>
       {/* <img className="w-10 pt-2" src={heart} alt="" /> */}
 

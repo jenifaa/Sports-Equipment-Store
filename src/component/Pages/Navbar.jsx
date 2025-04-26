@@ -201,11 +201,11 @@ const Navbar = () => {
                   Login
                 </button>
               </NavLink>
-              <NavLink to="/register">
+              {/* <NavLink to="/register">
                 <button className=" text-white text-lg border-white border-2 px-4 py-1 rounded-md">
                   Register
                 </button>
-              </NavLink>
+              </NavLink> */}
             </>
           )}
         </div>

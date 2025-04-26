@@ -19,7 +19,7 @@ const Footer = () => {
         <nav className="">
           <img src={logo} className="w-24" alt="" />
           <h2 className="text-5xl font-extrabold font ">SportZone</h2>
-          <p className="text-sm font-semibold">ACME Industries Ltd.</p>
+        
         </nav>
         <nav>
           <h6 className="footer-title">Company</h6>
